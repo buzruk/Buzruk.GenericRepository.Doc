@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>UpdateAsync &amp; Update - Buzruk.GenericRepository</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="Home.html"><strong aria-hidden="true">1.</strong> Welcome Aboard!</a></li><li class="chapter-item expanded "><a href="Installation.html"><strong aria-hidden="true">2.</strong> Installation Blastoff!</a></li><li class="chapter-item expanded affix "><li class="part-title">⚡️ Core Functionalities</li><li class="chapter-item expanded "><a href="Usage-examples.html"><strong aria-hidden="true">3.</strong> Code Examples Galore!</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> CRUD</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="GetAsync-and-Get.html"><strong aria-hidden="true">4.1.</strong> GetAsync & Get</a></li><li class="chapter-item expanded "><a href="GetPagedAsync-and-GetPaged.html"><strong aria-hidden="true">4.2.</strong> GetPagedAsync & GetPaged</a></li><li class="chapter-item expanded "><a href="AddAsync-and-Add.html"><strong aria-hidden="true">4.3.</strong> AddAsync & Add</a></li><li class="chapter-item expanded "><a href="AddRangeAsync-and-AddRange.html"><strong aria-hidden="true">4.4.</strong> AddRangeAsync & AddRange</a></li><li class="chapter-item expanded "><a href="UpdateAsync-and-Update.html" class="active"><strong aria-hidden="true">4.5.</strong> UpdateAsync & Update</a></li><li class="chapter-item expanded "><a href="updateRangeAsync-and-UpdateRange.html"><strong aria-hidden="true">4.6.</strong> UpdateRangeAsync & UpdateRange</a></li><li class="chapter-item expanded "><a href="RemoveAsync-and-Remove.html"><strong aria-hidden="true">4.7.</strong> RemoveAsync & Remove</a></li><li class="chapter-item expanded "><a href="RemoveRangeAsync-and-RemoveRange.html"><strong aria-hidden="true">4.8.</strong> RemoveRangeAsync & RemoveRange</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Other Methods</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="ExistsAsync-and-Exists.html"><strong aria-hidden="true">5.1.</strong> ExistsAsync & Exists</a></li><li class="chapter-item expanded "><a href="CountAsync-and-Count.html"><strong aria-hidden="true">5.2.</strong> CountAsync & Count</a></li><li class="chapter-item expanded "><a href="LongCountAsync-and-LongCount.html"><strong aria-hidden="true">5.3.</strong> LongCountAsync & LongCount</a></li><li class="chapter-item expanded "><a href="CountByAsync-and-CountBy.html"><strong aria-hidden="true">5.4.</strong> CountByAsync & CountBy</a></li><li class="chapter-item expanded "><a href="saveChangesAsync-and-SaveChanges.html"><strong aria-hidden="true">5.5.</strong> SaveChangesAsync & SaveChanges</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Support & Community</li><li class="chapter-item expanded "><a href="Faq.html"><strong aria-hidden="true">6.</strong> FAQ: Your Questions Answered</a></li><li class="chapter-item expanded "><a href="Troubleshooting.html"><strong aria-hidden="true">7.</strong> Troubleshooting Like a Pro</a></li><li class="chapter-item expanded "><a href="CONTRIBUTING.html"><strong aria-hidden="true">8.</strong> Contribute & Make an Impact!</a></li><li class="chapter-item expanded affix "><li class="part-title">Additional Resources</li><li class="chapter-item expanded "><a href="CHANGELOG.html"><strong aria-hidden="true">9.</strong> CHANGELOG.md: Stay Updated</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Buzruk.GenericRepository</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="understanding-updateasync-asynchronous-and-update-synchronous"><a class="header" href="#understanding-updateasync-asynchronous-and-update-synchronous">Understanding <code>UpdateAsync</code> (Asynchronous) and <code>Update</code> (Synchronous):</a></h2>
+<ul>
+<li><strong>Core Purpose</strong>: Both methods empower you to modify existing entities within your persistence layer (often a database) managed by your Object-Relational Mapper (ORM) or data access layer.</li>
+<li><strong>Key Distinction</strong>: <code>UpdateAsync</code> operates asynchronously, enhancing responsiveness in UI-centric applications by not blocking the UI thread. <code>Update</code> works synchronously, completing the operation in the current thread.</li>
+</ul>
+<h2 id="choosing-your-champion-updateasync-vs-update"><a class="header" href="#choosing-your-champion-updateasync-vs-update">Choosing Your Champion: UpdateAsync vs. Update</a></h2>
+<p>Here's a breakdown to help you decide:</p>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>UpdateAsync</th><th>Update</th></tr></thead><tbody>
+<tr><td>Execution</td><td>Asynchronous</td><td>Synchronous</td></tr>
+<tr><td>UI Responsiveness</td><td>Maintains responsiveness</td><td>Might block the UI thread</td></tr>
+<tr><td>Use Cases</td><td>User interactions, background processes</td><td>Background tasks, immediate data processing</td></tr>
+<tr><td>Performance (Network)</td><td>Potentially better for high latency networks</td><td>Might be slightly faster on local networks</td></tr>
+<tr><td>Error Handling</td><td>Requires proper asynchronous error handling</td><td>Standard synchronous error handling</td></tr>
+</tbody></table>
+</div>
+<h2 id="general-usage-and-examples"><a class="header" href="#general-usage-and-examples">General Usage and Examples:</a></h2>
+<ol>
+<li>Updating an Entity (Asynchronous):</li>
+</ol>
+<pre><code class="language-csharp">// Assuming you have an instance of your repository (`repository`)
+// and a modified Product object (`modifiedProduct`)
+
+Task updateProductTask = repository.UpdateAsync&lt;Product&gt;(modifiedProduct);
+
+// Await the task to ensure completion before proceeding (optional)
+await updateProductTask;
+
+Console.WriteLine($&quot;Product '{modifiedProduct.Name}' updated successfully.&quot;);
+</code></pre>
+<ol start="2">
+<li>Updating an Entity (Synchronous):</li>
+</ol>
+<pre><code class="language-csharp">repository.Update&lt;Product&gt;(modifiedProduct);
+
+// No need to await as the operation happens synchronously
+
+Console.WriteLine($&quot;Product '{modifiedProduct.Name}' updated successfully.&quot;);
+</code></pre>
+<h2 id="modern-usage-considerations"><a class="header" href="#modern-usage-considerations">Modern Usage Considerations</a></h2>
+<ul>
+<li><strong>Asynchronous Programming Paradigm</strong>: In modern applications, <code>UpdateAsync</code> is generally preferred due to its responsiveness benefits. Asynchronous programming allows your application to remain interactive while data is being updated.</li>
+<li><strong>Change Tracking</strong>: Many ORMs rely on change tracking to identify which properties of an entity have been modified. Ensure your ORM has change tracking enabled for <code>UpdateAsync </code>and <code>Update</code> to work effectively. Refer to your ORM's documentation for configuration details.</li>
+<li><strong>Detached Entities</strong>: If you're working with entities that haven't been loaded from the database (detached entities), you might need to attach them to the context before calling <code>UpdateAsync</code> or <code>Update</code>. Consult your ORM's documentation for specific guidance on attaching entities.</li>
+<li><strong>Optimistic Concurrency</strong>: Implement optimistic concurrency control if your application allows multiple users to modify the same entity simultaneously to prevent data inconsistencies. This often involves leveraging properties like timestamps or version numbers within your entity model.</li>
+</ul>
+<h2 id="advanced-usage-scenarios"><a class="header" href="#advanced-usage-scenarios">Advanced Usage Scenarios</a></h2>
+<ol>
+<li>Updating Entities with Relationships:</li>
+</ol>
+<p>Updating entities with relationships might involve cascading updates to related entities. Consult your ORM's documentation for configuration options and potential performance considerations.</p>
+<ol start="2">
+<li>Updating Multiple Entities:</li>
+</ol>
+<p>Some ORMs offer bulk update operations for improved performance when dealing with large datasets. Research methods like <code>UpdateRangeAsync</code> or <code>UpdateRange</code> provided by your ORM.</p>
+<h2 id="remember"><a class="header" href="#remember">Remember</a></h2>
+<ul>
+<li>Prioritize <code>UpdateAsync</code> for UI-centric applications to maintain responsiveness when updating entities.</li>
+<li>Choose <code>Update</code> for background tasks or scenarios where immediate confirmation of update success is crucial.</li>
+<li>Leverage asynchronous programming for a more modern and efficient approach.</li>
+<li>Ensure change tracking is enabled in your ORM and consider attaching detached entities if necessary.</li>
+<li>Implement optimistic concurrency control for scenarios with potential concurrent modifications.</li>
+<li>Explore advanced techniques like bulk updates and relationship handling depending on your ORM and use case.</li>
+</ul>
+<p>By effectively using <code>UpdateAsync</code> and <code>Update</code>, you can streamline the process of modifying data within your modern applications, ensuring responsiveness and data consistency.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="AddRangeAsync-and-AddRange.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="updateRangeAsync-and-UpdateRange.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="AddRangeAsync-and-AddRange.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="updateRangeAsync-and-UpdateRange.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

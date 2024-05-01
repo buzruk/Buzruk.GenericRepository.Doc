@@ -1,0 +1,1881 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Buzruk.GenericRepository</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="Home.html"><strong aria-hidden="true">1.</strong> Welcome Aboard!</a></li><li class="chapter-item expanded "><a href="Installation.html"><strong aria-hidden="true">2.</strong> Installation Blastoff!</a></li><li class="chapter-item expanded affix "><li class="part-title">⚡️ Core Functionalities</li><li class="chapter-item expanded "><a href="Usage-examples.html"><strong aria-hidden="true">3.</strong> Code Examples Galore!</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> CRUD</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="GetAsync-and-Get.html"><strong aria-hidden="true">4.1.</strong> GetAsync & Get</a></li><li class="chapter-item expanded "><a href="GetPagedAsync-and-GetPaged.html"><strong aria-hidden="true">4.2.</strong> GetPagedAsync & GetPaged</a></li><li class="chapter-item expanded "><a href="AddAsync-and-Add.html"><strong aria-hidden="true">4.3.</strong> AddAsync & Add</a></li><li class="chapter-item expanded "><a href="AddRangeAsync-and-AddRange.html"><strong aria-hidden="true">4.4.</strong> AddRangeAsync & AddRange</a></li><li class="chapter-item expanded "><a href="UpdateAsync-and-Update.html"><strong aria-hidden="true">4.5.</strong> UpdateAsync & Update</a></li><li class="chapter-item expanded "><a href="updateRangeAsync-and-UpdateRange.html"><strong aria-hidden="true">4.6.</strong> UpdateRangeAsync & UpdateRange</a></li><li class="chapter-item expanded "><a href="RemoveAsync-and-Remove.html"><strong aria-hidden="true">4.7.</strong> RemoveAsync & Remove</a></li><li class="chapter-item expanded "><a href="RemoveRangeAsync-and-RemoveRange.html"><strong aria-hidden="true">4.8.</strong> RemoveRangeAsync & RemoveRange</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Other Methods</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="ExistsAsync-and-Exists.html"><strong aria-hidden="true">5.1.</strong> ExistsAsync & Exists</a></li><li class="chapter-item expanded "><a href="CountAsync-and-Count.html"><strong aria-hidden="true">5.2.</strong> CountAsync & Count</a></li><li class="chapter-item expanded "><a href="LongCountAsync-and-LongCount.html"><strong aria-hidden="true">5.3.</strong> LongCountAsync & LongCount</a></li><li class="chapter-item expanded "><a href="CountByAsync-and-CountBy.html"><strong aria-hidden="true">5.4.</strong> CountByAsync & CountBy</a></li><li class="chapter-item expanded "><a href="saveChangesAsync-and-SaveChanges.html"><strong aria-hidden="true">5.5.</strong> SaveChangesAsync & SaveChanges</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Support & Community</li><li class="chapter-item expanded "><a href="Faq.html"><strong aria-hidden="true">6.</strong> FAQ: Your Questions Answered</a></li><li class="chapter-item expanded "><a href="Troubleshooting.html"><strong aria-hidden="true">7.</strong> Troubleshooting Like a Pro</a></li><li class="chapter-item expanded "><a href="CONTRIBUTING.html"><strong aria-hidden="true">8.</strong> Contribute & Make an Impact!</a></li><li class="chapter-item expanded affix "><li class="part-title">Additional Resources</li><li class="chapter-item expanded "><a href="CHANGELOG.html"><strong aria-hidden="true">9.</strong> CHANGELOG.md: Stay Updated</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Buzruk.GenericRepository</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="welcome-aboard-buzrukgenericrepository-level-up-your-net-data-access"><a class="header" href="#welcome-aboard-buzrukgenericrepository-level-up-your-net-data-access">Welcome Aboard! Buzruk.GenericRepository: Level Up Your .NET Data Access</a></h1>
+<p><strong>Tired of writing boilerplate code for CRUD operations?  Welcome to the future of data access in .NET!</strong>  Buzruk.GenericRepository is your <strong>supercharged</strong>, <strong>asynchronous-first</strong> generic repository, designed to <strong>revolutionize</strong> the way you interact with your data.</p>
+<p><strong>This modern powerhouse</strong> provides a <strong>unified interface</strong> to work with various entities, allowing you to <strong>focus on building amazing features</strong> while it handles the data interaction heavy lifting. Here's what awaits you:</p>
+<h2 id="-asynchronous-excellence"><a class="header" href="#-asynchronous-excellence">⚡️ Asynchronous Excellence</a></h2>
+<ul>
+<li>Ditch the wait! Embrace the power of <strong>asynchronous methods by default</strong> for <strong>non-blocking, efficient data retrieval and manipulation</strong>. Free your UI threads and keep your applications responsive!</li>
+<li><strong>Synchronous Options</strong>: Still need compatibility with legacy code or specific use cases? We've got you covered with included synchronous counterparts.</li>
+</ul>
+<h2 id="effortless-crud-operations"><a class="header" href="#effortless-crud-operations">Effortless CRUD Operations</a></h2>
+<ul>
+<li><strong>Intuitive Methods</strong>: Perform essential Create, Read, Update, and Delete (CRUD) actions with ease using methods like <code>GetAsync</code>, <code>GetPagedAsync</code>, <code>AddAsync</code>, <code>AddRangeAsync</code>, <code>UpdateAsync</code>, and more. Simplify complex data management and write cleaner code.</li>
+<li><strong>Flexible Data Fetching</strong>: Find specific entities by ID or filter them based on your criteria using the versatile GetAsync method. <strong>Get exactly the data you need, when you need it</strong>.</li>
+</ul>
+<h2 id="handle-large-datasets-with-grace"><a class="header" href="#handle-large-datasets-with-grace">Handle Large Datasets with Grace</a></h2>
+<ul>
+<li><strong>Paged Data Fetching (Async)</strong>: Say goodbye to overwhelming data loads! Retrieve data in manageable chunks with <code>GetPagedAsync</code>. This is ideal for pagination and performance optimization in applications dealing with large datasets.</li>
+<li><strong>Efficient Counting</strong>: Gain a clear picture of your data with <code>CountAsync</code> for total entity counts or utilize <code>LongCountAsync</code> for accurate counts even with massive datasets.</li>
+</ul>
+<h2 id="more-power-at-your-fingertips"><a class="header" href="#more-power-at-your-fingertips">More Power at Your Fingertips</a></h2>
+<ul>
+<li><strong>Targeted Counting (Async)</strong>: Delve deeper with <code>CountByAsync</code>. Asynchronously count entities based on specific conditions, empowering you with granular insights into your data distribution.</li>
+<li><strong>Bulk Operations (Async)</strong>: Optimize performance with <code>AddRangeAsync</code> and <code>UpdateRangeAsync</code> methods, allowing you to add or update multiple entities efficiently in a single operation.</li>
+</ul>
+<h2 id="built-for-seamless-integration"><a class="header" href="#built-for-seamless-integration">Built for Seamless Integration</a></h2>
+<ul>
+<li><strong>Effortless Integration with Entity Framework Core</strong>: Designed to work seamlessly with Entity Framework Core, allowing you to leverage its powerful features without additional configuration.</li>
+</ul>
+<h2 id="optional-advanced-features"><a class="header" href="#optional-advanced-features">Optional Advanced Features</a></h2>
+<ul>
+<li><strong>Eager Loading (Optional)</strong>: Boost performance by pre-fetching related entities when retrieving primary data (including an asynchronous <code>EagerLoadAsync</code> option), minimizing subsequent database calls.</li>
+<li><strong>Change Tracking (Optional)</strong>: Track entity modifications for efficient saving updates (requires configuration).</li>
+</ul>
+<h2 id="a-collaborative-future"><a class="header" href="#a-collaborative-future">A Collaborative Future</a></h2>
+<ul>
+<li>We actively encourage contributions to broaden support for additional data access providers beyond Entity Framework Core! Let's make this a universally applicable solution!</li>
+<li>Our relentless pursuit of unit testing coverage ensures unmatched reliability. You can trust your data access layer with confidence!</li>
+<li>Expect even more detailed examples, tutorials, and guides to transform you into a data access master (coming soon)!</li>
+</ul>
+<h2 id="ready-to-experience-the-modern-data-access-revolution"><a class="header" href="#ready-to-experience-the-modern-data-access-revolution">Ready to Experience the Modern Data Access Revolution?</a></h2>
+<p>Get started with Buzruk.GenericRepository today and unlock a whole new level of efficiency and performance in your .NET data access! Dive deeper into the following sections to explore installation, usage examples, and the full API reference:</p>
+<ul>
+<li><strong>Installation</strong>: Effortlessly integrate the package into your project.</li>
+<li><strong>Usage Examples</strong>: Practical code snippets to guide you through common operations.</li>
+<li><strong>API Reference</strong>: Comprehensive documentation for every class and method.</li>
+</ul>
+<p><strong>Join the community and start building amazing things!</strong></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation-blastoff---integrate-your-package-name-in-a-flash"><a class="header" href="#installation-blastoff---integrate-your-package-name-in-a-flash">Installation Blastoff! - Integrate [Your Package Name] in a Flash</a></h1>
+<p>Get ready to <strong>launch your data access game into the stratosphere</strong> with [Your Package Name]! Integrating this powerhouse package into your .NET project is a <strong>one-click</strong> (well, one-command) operation. Here's how to seamlessly inject its functionalities into your project:</p>
+<ol>
+<li>Open Your Command Prompt (or Terminal) - Your Mission Control</li>
+</ol>
+<p>First things first, navigate to your project directory using your preferred terminal or command prompt. This is your mission control center where you'll initiate the installation sequence.</p>
+<ol start="2">
+<li>Unleash the Power of NuGet - Your Launch System</li>
+</ol>
+<p>NuGet, the .NET package manager, is your rocket fuel for this installation.  Fire up the command prompt and type in this powerful command:</p>
+<pre><code class="language-bash">dotnet add package [YourPackageName]
+</code></pre>
+<ol start="3">
+<li>Hit Enter and Blast Off!</li>
+</ol>
+<p>Press Enter, and boom!  NuGet takes care of the rest, downloading and installing the package seamlessly within your project.  Congratulations, you've successfully integrated [Your Package Name] and are now ready to leverage its modern data access magic!</p>
+<h2 id="additional-tips-for-a-smooth-landing"><a class="header" href="#additional-tips-for-a-smooth-landing">Additional Tips for a Smooth Landing</a></h2>
+<ul>
+<li><strong>Ensure a Stable Internet Connection</strong>: For a smooth installation, make sure you have a stable internet connection to allow NuGet to download the package.</li>
+<li><strong>Double-Check the Package Name</strong>: Pay close attention to the spelling of your package name in the command to avoid any installation errors.</li>
+</ul>
+<h2 id="ready-to-take-flight-with-enhanced-data-access"><a class="header" href="#ready-to-take-flight-with-enhanced-data-access">Ready to Take Flight with Enhanced Data Access?</a></h2>
+<p>With [Your Package Name] on board, you're equipped with a state-of-the-art, asynchronous-first data access solution.  Get ready to <strong>streamline your data interaction</strong>, focus on building incredible features, and leave the heavy lifting to this powerful repository!  The sky's the limit for your .NET applications!</p>
+<p><strong>Now that you've installed the package, explore the next sections to</strong>:</p>
+<ul>
+<li><strong>Reference the Namespace</strong>: Unlock the repository's functionalities within your code.</li>
+<li><strong>Create an Instance</strong>: Activate your data access superpowers!</li>
+<li><strong>Explore the Power (Optional)</strong>: Dive deeper into code examples and API reference.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="code-examples-galore-unleash-the-power-of-buzrukgenericrepository"><a class="header" href="#code-examples-galore-unleash-the-power-of-buzrukgenericrepository">Code Examples Galore! Unleash the Power of Buzruk.GenericRepository</a></h1>
+<p>This section equips you with practical code snippets showcasing the core functionalities of Buzruk.GenericRepository. Dive into these examples and explore dedicated Wiki pages for each method, providing a comprehensive breakdown of usage and best practices.</p>
+<h2 id="crud-operations-effortless-data-management"><a class="header" href="#crud-operations-effortless-data-management">CRUD Operations: Effortless Data Management</a></h2>
+<ol>
+<li>Retrieving Entities:
+<ul>
+<li><strong>Get (Synchronous)</strong>: Grab a specific entity by ID with lightning speed. (Link to Wiki page for Get)</li>
+<li><strong>GetAsync (Asynchronous)</strong>: Fetch an entity asynchronously for a smooth and responsive user experience. (Link to Wiki page for GetAsync)</li>
+<li><strong>GetPagedAsync (Asynchronous)</strong>: Conquer large datasets by retrieving data in manageable chunks, ideal for pagination. (Link to Wiki page for GetPagedAsync)</li>
+</ul>
+</li>
+<li>Creating Entities:
+<ul>
+<li><strong>Add (Synchronous)</strong>: Effortlessly create a new entity and add it to your data store. (Link to Wiki page for Add)</li>
+<li><strong>AddAsync (Asynchronous)</strong>: Asynchronously add a new entity, keeping your UI responsive. (Link to Wiki page for AddAsync)</li>
+</ul>
+</li>
+<li>Updating Entities:
+<ul>
+<li><strong>Update (Synchronous)</strong>: Modify an existing entity's properties and persist the changes. (Link to Wiki page for Update)</li>
+<li><strong>UpdateAsync (Asynchronous)</strong>: Asynchronously update an entity, ensuring a smooth user experience. (Link to Wiki page for UpdateAsync)</li>
+</ul>
+</li>
+<li>Deleting Entities:
+<ul>
+<li><strong>Remove (Synchronous)</strong>: Remove an entity from the data store efficiently. (Link to Wiki page for Remove)</li>
+<li><strong>RemoveAsync (Asynchronous)</strong>: Asynchronously delete an entity, maintaining responsiveness. (Link to Wiki page for RemoveAsync)</li>
+</ul>
+</li>
+</ol>
+<h2 id="bulk-operations-efficiency-at-your-fingertips"><a class="header" href="#bulk-operations-efficiency-at-your-fingertips">Bulk Operations: Efficiency at Your Fingertips</a></h2>
+<ul>
+<li><strong>AddRangeAsync (Asynchronous)</strong>: Add multiple entities in a single asynchronous operation, optimizing performance for large datasets. (Link to Wiki page for AddRangeAsync)</li>
+<li><strong>UpdateRangeAsync (Asynchronous)</strong>: Update multiple entities asynchronously, streamlining bulk modifications. (Link to Wiki page for UpdateRangeAsync)</li>
+</ul>
+<h2 id="data-insights--utility-methods"><a class="header" href="#data-insights--utility-methods">Data Insights &amp; Utility Methods</a></h2>
+<ul>
+<li><strong>Exists (Synchronous)</strong>: Swiftly check if an entity exists based on its ID. (Link to Wiki page for Exists)</li>
+<li><strong>ExistsAsync (Asynchronou)</strong>: Asynchronously determine if an entity exists. (Link to Wiki page for ExistsAsync)</li>
+<li><strong>Count (Synchronous)</strong>: Get the total number of entities in your data store. (Link to Wiki page for Count)</li>
+<li><strong>CountAsync (Asynchronous)</strong>: Asynchronously retrieve the total entity count. (Link to Wiki page for CountAsync)</li>
+<li><strong>LongCount (Synchronous)</strong>: Accurately count entities, even with massive datasets. (Link to Wiki page for LongCount)</li>
+<li><strong>LongCountAsync (Asynchronous)</strong>: Asynchronously count a large number of entities. (Link to Wiki page for LongCountAsync)</li>
+<li><strong>CountBy (Synchronous)</strong>: Count entities based on specific criteria for granular data insights. (Link to Wiki page for CountBy)</li>
+<li><strong>CountByAsync (Asynchronous)</strong>: Asynchronously count entities based on conditions. (Link to Wiki page for CountByAsync)</li>
+</ul>
+<h2 id="optional-advanced-features-1"><a class="header" href="#optional-advanced-features-1">Optional Advanced Features</a></h2>
+<ul>
+<li><strong>Eager Loading (Optional)</strong>: Boost performance by pre-fetching related entities when retrieving primary data (including an asynchronous EagerLoadAsync option). (Link to Wiki page for Eager Loading - if applicable)</li>
+<li><strong>Change Tracking (Optional)</strong>: Track entity modifications for efficient saving updates (requires configuration). (Link to Wiki page for Change Tracking - if applicable)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="getasync--get-power-up-your-data-retrieval-in-buzrukgenericrepository"><a class="header" href="#getasync--get-power-up-your-data-retrieval-in-buzrukgenericrepository">GetAsync &amp; Get: Power Up Your Data Retrieval in Buzruk.GenericRepository</a></h1>
+<p>This section dives deep into the <code>GetAsync</code> and <code>Get</code> methods, your weapons of choice for retrieving entities in Buzruk.GenericRepository. We'll explore their functionalities, usage scenarios, comparisons, and best practices to empower you with efficient data access.</p>
+<p>This comprehensive guide empowers you to master the GetAsync and Get methods within Buzruk.GenericRepository. We'll delve into their functionalities, explore various usage scenarios with different parameters, and provide examples to illustrate their power.</p>
+<h2 id="unveiling-the-power-of-getasync-asynchronous"><a class="header" href="#unveiling-the-power-of-getasync-asynchronous">Unveiling the Power of <code>GetAsync</code> (Asynchronous):</a></h2>
+<ul>
+<li><strong>Champion of Responsiveness</strong>: <code>GetAsync</code> shines in asynchronous operations. It retrieves an entity by its ID without blocking the UI thread, keeping your applications responsive and snappy. This is particularly valuable for user interfaces where you want to avoid freezing while data is fetched.</li>
+</ul>
+<h3 id="example-asynchronously-retrieving-a-product"><a class="header" href="#example-asynchronously-retrieving-a-product">Example: Asynchronously Retrieving a Product</a></h3>
+<pre><code class="language-csharp">// Assuming you have an instance of the repository (`repository`)
+// and a product ID (`123`)
+
+Task&lt;Product&gt; productTask = repository.GetAsync&lt;Product&gt;(123);
+
+// Use await to get the actual product object
+Product product = await productTask;
+
+if (product != null)
+{
+    Console.WriteLine($&quot;Product Name: {product.Name}&quot;);
+}
+else
+{
+    Console.WriteLine(&quot;Product not found.&quot;);
+}
+</code></pre>
+<h3 id="getasync-in-action"><a class="header" href="#getasync-in-action"><code>GetAsync</code> in Action:</a></h3>
+<ul>
+<li>Ideal for scenarios where immediate data access isn't crucial, but maintaining a responsive UI is essential.</li>
+<li>Applications with user interactions that could be interrupted by synchronous data retrieval benefit greatly from <code>GetAsync</code>.</li>
+</ul>
+<h2 id="understanding-get-synchronous"><a class="header" href="#understanding-get-synchronous">Understanding <code>Get</code> (Synchronous):</a></h2>
+<ul>
+<li><strong>Speedy Retrieval</strong>: <code>Get</code> excels in synchronous data retrieval. It fetches an entity by its ID in a single operation, making it a good choice when you need the data immediately and UI responsiveness isn't a major concern.</li>
+</ul>
+<h3 id="example-synchronously-retrieving-a-product"><a class="header" href="#example-synchronously-retrieving-a-product">Example: Synchronously Retrieving a Product</a></h3>
+<pre><code class="language-csharp">// Assuming you have an instance of the repository (`repository`)
+// and a product ID (`123`)
+
+Product product = repository.Get&lt;Product&gt;(123);
+
+if (product != null)
+{
+    Console.WriteLine($&quot;Product Name: {product.Name}&quot;);
+}
+else
+{
+    Console.WriteLine(&quot;Product not found.&quot;);
+}
+</code></pre>
+<h3 id="get-on-the-battlefield"><a class="header" href="#get-on-the-battlefield"><code>Get</code> on the Battlefield</a></h3>
+<ul>
+<li>Perfect for background tasks or processes where responsiveness isn't a priority.</li>
+<li>If you need the data immediately for further processing or decision-making within the same code block, <code>Get</code> might be a suitable choice.</li>
+</ul>
+<h2 id="choosing-your-champion-getasync-vs-get"><a class="header" href="#choosing-your-champion-getasync-vs-get">Choosing Your Champion: <code>GetAsync</code> vs. <code>Get</code></a></h2>
+<p>Here's a quick comparison to help you decide:</p>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>GetAsync</th><th>Get</th></tr></thead><tbody>
+<tr><td>Execution</td><td>Asynchronous</td><td>Synchronous</td></tr>
+<tr><td>UI Responsiveness</td><td>Maintains responsiveness</td><td>Might block the UI thread</td></tr>
+<tr><td>Use Cases</td><td>User interactions, background processes</td><td>Background tasks, immediate data processing</td></tr>
+<tr><td>Performance (Network)</td><td>Potentially better for high latency networks</td><td>Might be slightly faster on local networks</td></tr>
+</tbody></table>
+</div>
+<h2 id="pro-tips-for-effective-usage"><a class="header" href="#pro-tips-for-effective-usage">Pro Tips for Effective Usage</a></h2>
+<ul>
+<li><strong>Embrace Asynchronous Operations</strong>: In most modern applications, <code>GetAsync</code> is the recommended approach due to its responsiveness benefits.</li>
+<li><strong>Consider UI Impact</strong>: If user interaction might be affected by a data retrieval block, prioritize <code>GetAsync</code>.</li>
+<li><strong>Network Latency Matters</strong>: In high-latency network environments, <code>GetAsync</code> can outperform <code>Get</code> due to its non-blocking nature.</li>
+<li><strong>Error Handling</strong>: Implement proper error handling mechanisms to gracefully handle cases where the entity might not be found.</li>
+</ul>
+<p><strong>Remember</strong>: Both GetAsync and Get offer valuable functionalities for retrieving entities. By understanding their strengths, weaknesses, and use cases, you can make informed decisions to optimize your data access strategy in Buzruk.GenericRepository.</p>
+<h2 id="understanding-getasync-asynchronous-and-get-synchronous"><a class="header" href="#understanding-getasync-asynchronous-and-get-synchronous">Understanding <code>GetAsync</code> (Asynchronous) and <code>Get</code> (Synchronous)</a></h2>
+<ul>
+<li><strong>Core Functionality</strong>: Both methods serve the same purpose: retrieving an entity by its ID.
+<ul>
+<li><code>GetAsync</code> operates asynchronously, excelling in responsiveness for UI-centric applications.</li>
+<li><code>Get</code> works synchronously, fetching data in a single operation, making it suitable for background tasks.</li>
+</ul>
+</li>
+</ul>
+<h3 id="exploring-the-powerhouse-parameters"><a class="header" href="#exploring-the-powerhouse-parameters">Exploring the Powerhouse Parameters</a></h3>
+<p>Both methods offer a plethora of optional parameters that significantly enhance data retrieval capabilities. Here's a breakdown of the key ones:</p>
+<ol>
+<li>Predicates (Expression&lt;Func&lt;T, bool&gt;&gt;):
+<ul>
+<li><strong>Function</strong>: Filter entities based on specific criteria.</li>
+<li><strong>Usage</strong>: Pass a lambda expression that evaluates to <code>true</code> for entities you want to retrieve.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Example: Get Products with Price Greater Than $100 (Async):</strong></p>
+<pre><code class="language-csharp">Task&lt;Product&gt; productTask = repository.GetAsync&lt;Product&gt;(
+    predicate: p =&gt; p.Price &gt; 100
+);
+
+// Await the task to get the product
+Product product = await productTask;
+</code></pre>
+<ol start="2">
+<li><code>orderBy</code> (Expression&lt;Func&lt;T, object&gt;&gt;) and <code>thenBy</code> (Expression&lt;Func&lt;T, object&gt;&gt;):
+<ul>
+<li><strong>Function</strong>: Order retrieved entities based on one or more properties.</li>
+<li><strong>Usage</strong>: Pass a lambda expression specifying the property for sorting (ascending order by default). Use <code>thenBy</code> for chained sorting (optional).</li>
+</ul>
+</li>
+</ol>
+<p><strong>Example: Get Top 3 Products Ordered by Price (Descending) with <code>thenBy</code> for Name (Async):</strong></p>
+<pre><code class="language-csharp">Task&lt;List&lt;Product&gt;&gt; productsTask = repository.GetAsync&lt;Product&gt;(
+    orderBy: p =&gt; p.Price descending,
+    thenBy: p =&gt; p.Name
+).Take(3); // Limit to top 3 products
+
+List&lt;Product&gt; products = await productsTask;
+
+foreach (var product in products)
+{
+    Console.WriteLine($&quot;Product: {product.Name}, Price: ${product.Price}&quot;);
+}
+</code></pre>
+<ol start="3">
+<li><code>includes</code> (Expression&lt;Func&lt;T, object&gt;&gt;[]) and <code>thenInclude</code> (Expression&lt;Func&lt;T, object&gt;&gt;[]):
+<ul>
+<li><strong>Function</strong>: Eagerly load related entities along with the primary entity.</li>
+<li><strong>Usage</strong>: Pass an array of lambda expressions specifying the navigation properties to include. Use <code>thenInclude</code> for nested eager loading (optional).</li>
+</ul>
+</li>
+</ol>
+<p><strong>Example: Get Product with its Category (Async):</strong></p>
+<pre><code class="language-csharp">Task&lt;Product&gt; productTask = repository.GetAsync&lt;Product&gt;(
+    includes: p =&gt; p.Category
+);
+
+Product product = await productTask;
+
+if (product != null)
+{
+    Console.WriteLine($&quot;Product Name: {product.Name}&quot;);
+    Console.WriteLine($&quot;Category Name: {product.Category.Name}&quot;);
+}
+</code></pre>
+<ol start="4">
+<li><code>tracking</code> (bool):
+<ul>
+<li><strong>Function</strong>: Controls whether to track entity changes for potential updates (optional, might require repository configuration for <code>UpdateAsync</code> to work).</li>
+<li><strong>Usage</strong>: Set to <code>true</code> to enable change tracking.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Important Note</strong>: Refer to your repository's specific documentation for any additional parameters or configuration requirements related to change tracking.</p>
+<h3 id="behavior-without-parameters"><a class="header" href="#behavior-without-parameters">Behavior Without Parameters</a></h3>
+<ul>
+<li>If no parameters are provided, both <code>GetAsync</code> and <code>Get</code> retrieve the entity by its ID only.</li>
+<li>The returned value is a <code>Product</code> object (or your specific entity type) if the entity is found, or <code>null</code> if not found.</li>
+</ul>
+<h3 id="remember"><a class="header" href="#remember">Remember</a></h3>
+<ul>
+<li>Prioritize <code>GetAsync</code> for responsive UI-centric applications.</li>
+<li>Choose Get for background tasks or scenarios where immediate data access is critical.</li>
+<li>Leverage predicates for filtering, <code>orderBy</code>/<code>thenBy</code> for sorting, <code>includes</code>/<code>thenInclude</code> for eager loading, and <code>tracking</code> (if supported) for efficient updates.</li>
+<li>Always refer to your repository's documentation for complete parameter details and configuration requirements.</li>
+</ul>
+<p>By mastering these advanced functionalities, you can unlock the full potential of <code>GetAsync</code> and <code>Get</code>, enabling you to retrieve and manipulate data with precision and efficiency within Buzruk.GenericRepository.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="getpagedasync--getpaged-mastering-pagination-in-buzrukgenericrepository"><a class="header" href="#getpagedasync--getpaged-mastering-pagination-in-buzrukgenericrepository">GetPagedAsync &amp; GetPaged: Mastering Pagination in Buzruk.GenericRepository</a></h1>
+<p>This in-depth guide equips you to conquer large datasets effectively using <code>GetPagedAsync</code> and <code>GetPaged</code> methods within Buzruk.GenericRepository. We'll explore their functionalities, delve into various parameters for customized pagination, and provide illustrative examples to solidify your understanding.</p>
+<h2 id="understanding-getpagedasync-asynchronous-and-getpaged-synchronous"><a class="header" href="#understanding-getpagedasync-asynchronous-and-getpaged-synchronous">Understanding GetPagedAsync (Asynchronous) and GetPaged (Synchronous)</a></h2>
+<ul>
+<li><strong>Core Purpose</strong>: Both methods retrieve data in manageable chunks, ideal for pagination and handling large datasets efficiently.
+<ul>
+<li><code>GetPagedAsync</code> operates asynchronously, maintaining UI responsiveness.</li>
+<li><code>Get</code> works synchronously, fetching a page of data in a single operation.</li>
+</ul>
+</li>
+</ul>
+<h2 id="unveiling-the-powerhouse-parameters"><a class="header" href="#unveiling-the-powerhouse-parameters">Unveiling the Powerhouse Parameters</a></h2>
+<p>Both methods offer a plethora of optional parameters that empower you to tailor pagination to your specific needs. Here's a breakdown of the key ones:</p>
+<ol>
+<li>Predicates (Expression&lt;Func&lt;T, bool&gt;&gt;):
+<ul>
+<li><strong>Function</strong>: Filter entities based on specific criteria before pagination.</li>
+<li><strong>Usage</strong>: Pass a lambda expression that evaluates to <code>true</code> for entities you want to include in the results.</li>
+</ul>
+</li>
+</ol>
+<h3 id="example-getpaged-async-products-with-price-greater-than-100-page-2-size-10"><a class="header" href="#example-getpaged-async-products-with-price-greater-than-100-page-2-size-10">Example: GetPaged Async: Products with Price Greater Than $100 (Page 2, Size 10)</a></h3>
+<pre><code class="language-csharp">Task&lt;PagedResult&lt;Product&gt;&gt; pagedProductsTask = repository.GetPagedAsync&lt;Product&gt;(
+    predicate: p =&gt; p.Price &gt; 100,
+    pageNumber: 2,
+    pageSize: 10
+);
+
+PagedResult&lt;Product&gt; pagedProducts = await pagedProductsTask;
+
+// Access total items and current page's items
+int totalItems = pagedProducts.TotalCount;
+List&lt;Product&gt; products = pagedProducts.Items;
+
+Console.WriteLine($&quot;Total Products: {totalItems}&quot;);
+Console.WriteLine($&quot;Products on Page {pageNumber}:&quot;);
+foreach (var product in products)
+{
+    Console.WriteLine($&quot;- {product.Name}&quot;);
+}
+</code></pre>
+<ol start="2">
+<li><code>orderBy</code> (Expression&lt;Func&lt;T, object&gt;&gt;) and <code>thenBy</code> (Expression&lt;Func&lt;T, object&gt;&gt;):
+<ul>
+<li><strong>Function</strong>: Order retrieved entities within a page based on one or more properties.</li>
+<li><strong>Usage</strong>: Pass a lambda expression specifying the property for sorting (ascending order by default). Use <code>thenBy</code> for chained sorting (optional).</li>
+</ul>
+</li>
+</ol>
+<h3 id="example-getpaged-synchronous-top-3-products-on-each-page-ordered-by-price-descending-with-thenby-for-name"><a class="header" href="#example-getpaged-synchronous-top-3-products-on-each-page-ordered-by-price-descending-with-thenby-for-name">Example: GetPaged (Synchronous): Top 3 Products on Each Page, Ordered by Price (Descending) with <code>thenBy</code> for Name</a></h3>
+<pre><code class="language-csharp">var pagedProducts = repository.GetPaged&lt;Product&gt;(
+    orderBy: p =&gt; p.Price descending,
+    thenBy: p =&gt; p.Name,
+    pageNumber: 1,
+    pageSize: 3
+).ToList(); // Convert to List for easy iteration
+
+foreach (var product in pagedProducts)
+{
+    Console.WriteLine($&quot;Product Name: {product.Name}, Price: ${product.Price}&quot;);
+}
+</code></pre>
+<ol start="3">
+<li><code>includes</code> (Expression&lt;Func&lt;T, object&gt;&gt;[]) and <code>thenInclude</code> (Expression&lt;Func&lt;T, object&gt;&gt;[]):
+<ul>
+<li><strong>Function</strong>: Eagerly load related entities along with the primary entities within a page.</li>
+<li><strong>Usage</strong>: Pass an array of lambda expressions specifying the navigation properties to include. Use <code>thenInclude</code> for nested eager loading (optional).</li>
+</ul>
+</li>
+</ol>
+<h3 id="example-getpagedasync-get-products-with-their-categories-on-page-1-size-5"><a class="header" href="#example-getpagedasync-get-products-with-their-categories-on-page-1-size-5">Example: GetPagedAsync: Get Products with their Categories on Page 1 (Size 5)</a></h3>
+<pre><code class="language-csharp">Task&lt;PagedResult&lt;Product&gt;&gt; pagedProductsTask = repository.GetPagedAsync&lt;Product&gt;(
+    includes: p =&gt; p.Category,
+    pageNumber: 1,
+    pageSize: 5
+);
+
+PagedResult&lt;Product&gt; pagedProducts = await pagedProductsTask;
+
+foreach (var product in pagedProducts.Items)
+{
+    Console.WriteLine($&quot;Product Name: {product.Name}&quot;);
+    Console.WriteLine($&quot;Category Name: {product.Category.Name}&quot;);
+}
+</code></pre>
+<ol start="4">
+<li><code>tracking</code> (bool):
+<ul>
+<li><strong>Function</strong>: Controls whether to track entity changes for potential updates (optional, might require repository configuration for <code>UpdateAsync</code> to work).</li>
+<li><strong>Usage</strong>: Set to <code>true</code> to enable change tracking within the retrieved page.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Important Note</strong>: Refer to your repository's specific documentation for any additional parameters or configuration requirements related to change tracking.</p>
+<h2 id="behavior-without-parameters-1"><a class="header" href="#behavior-without-parameters-1">Behavior Without Parameters</a></h2>
+<ul>
+<li>If no parameters are provided, both <code>GetPagedAsync</code> and <code>GetPaged</code> retrieve the first page (usually page number 1) with a default page size (often configurable).</li>
+<li>The returned value is a <code>PagedResult&lt;T&gt;</code> object (where <code>T</code> is your entity type). This object contains two key properties:</li>
+</ul>
+<h2 id="absolutely-heres-a-breakdown-of-the-extension-methods-provided-in-the-pagedresultsextension-class"><a class="header" href="#absolutely-heres-a-breakdown-of-the-extension-methods-provided-in-the-pagedresultsextension-class">Absolutely! Here's a breakdown of the extension methods provided in the <code>PagedResultsExtension</code> class</a></h2>
+<ol>
+<li>
+<p><code>GetPage&lt;T&gt;(this PagedResults&lt;T&gt; pagedResults)</code></p>
+<ul>
+<li><strong>Functionality</strong>: This method extracts a specific page of data from the <code>PagedResults&lt;T&gt;</code> object.</li>
+<li><strong>Parameters</strong>: 
+<ul>
+<li><strong>pagedResults</strong>: The <code>PagedResults&lt;T&gt;</code> object containing the paginated data.</li>
+</ul>
+</li>
+<li><strong>Returns</strong>: An <code>IEnumerable&lt;T&gt;</code> containing the items for the requested page.</li>
+<li><strong>Exception</strong>: Throws an <code>ArgumentOutOfRangeException</code> if the requested page number is outside the valid range (1 to <code>PageCount</code>).</li>
+<li><strong>Usage</strong>:</li>
+</ul>
+<pre><code class="language-csharp">// Assuming you have a PagedResults&lt;Product&gt; object named 'pagedProducts'
+IEnumerable&lt;Product&gt; currentPageProducts = pagedProducts.GetPage&lt;Product&gt;();
+
+// Iterate through the products on the current page
+foreach (var product in currentPageProducts)
+{
+Console.WriteLine($&quot;Product Name: {product.Name}&quot;);
+}
+</code></pre>
+</li>
+<li>
+<p><code>GetPartialView&lt;T&gt;(this PagedResults&lt;T&gt; model, string controllerName, string actionName, string areaName = &quot;&quot;, string routeParameterName = &quot;pageNumber&quot;)</code></p>
+<ul>
+<li><strong>Functionality</strong>: This method generates a partial view containing HTML code for page navigation based on the provided PagedResults<T> model. It leverages Razor syntax (@ symbol) for building the HTML structure.</li>
+<li><strong>Parameters</strong>:
+<ul>
+<li><strong>model</strong>: The PagedResults<T> instance containing paging information and data.</li>
+<li><strong>controllerName</strong>: The name of the controller that handles pagination requests.</li>
+<li><strong>actionName</strong>: The name of the action method that handles pagination requests.</li>
+<li><strong>areaName (Optional)</strong>: The name of the area for routing (defaults to empty string).</li>
+<li><strong>routeParameterName (Optional)</strong>: The name of the route parameter used for the current page number (defaults to &quot;pageNumber&quot;).</li>
+</ul>
+</li>
+<li><strong>Returns</strong>: A string containing the generated HTML partial view for pagination.</li>
+<li><strong>Notes</strong>:
+<ul>
+<li>This method currently uses a <code>StringBuilder</code> to construct the HTML dynamically.</li>
+<li>It includes placeholder comments for functionalities like adding dark mode/light mode options (TODO).</li>
+<li>The logic for generating the pagination links considers various scenarios based on the total number of pages and the current page number.</li>
+<li>It also includes some basic JavaScript code to dynamically set the active page class and handle relative URLs.</li>
+<li><strong>Usage</strong>:</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-csharp">// Assuming you have a PagedResults&lt;Product&gt; object named 'pagedProducts'
+// and your controller and action names are set
+
+string paginationHtml = pagedProducts.GetPartialView&lt;Product&gt;(
+    controllerName: &quot;Products&quot;,
+    actionName: &quot;Index&quot;
+);
+
+// Use the generated HTML in your Razor view
+@Html.Raw(paginationHtml)
+</code></pre>
+<h2 id="remember-1"><a class="header" href="#remember-1">Remember:</a></h2>
+<ul>
+<li>The <code>GetPage</code> method is useful for retrieving a specific page of data for further processing within your application logic.</li>
+<li>The <code>GetPartialView</code> method helps in creating a user-friendly pagination interface for navigating through large datasets in your web application.</li>
+<li>Consider customizing the provided JavaScript code to fit your specific requirements and styling preferences.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="understanding-addasync-asynchronous-and-add-synchronous"><a class="header" href="#understanding-addasync-asynchronous-and-add-synchronous">Understanding <code>AddAsync</code> (Asynchronous) and <code>Add</code> (Synchronous)</a></h2>
+<ul>
+<li><strong>Core Purpose</strong>: Both methods serve the same mission: adding a new entity to a persistence layer (often a database) managed by your Object-Relational Mapper (ORM) or data access layer.</li>
+<li><strong>Key Distinction</strong>: <code>AddAsync</code> operates asynchronously, enhancing responsiveness in UI-centric applications by not blocking the UI thread. <code>Add</code> works synchronously, completing the operation in the current thread.</li>
+</ul>
+<h2 id="choosing-your-champion-addasync-vs-add"><a class="header" href="#choosing-your-champion-addasync-vs-add">Choosing Your Champion: AddAsync vs. Add</a></h2>
+<p>Here's a breakdown to help you decide:</p>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>AddAsync</th><th>Add</th></tr></thead><tbody>
+<tr><td>Execution</td><td>Asynchronous</td><td>Synchronous</td></tr>
+<tr><td>UI Responsiveness</td><td>Maintains responsiveness</td><td>Might block the UI thread</td></tr>
+<tr><td>Use Cases</td><td>User interactions, background processes</td><td>Background tasks, immediate data processing</td></tr>
+<tr><td>Performance (Network)</td><td>Potentially better for high latency networks</td><td>Might be slightly faster on local networks</td></tr>
+<tr><td>Error Handling</td><td>Requires proper asynchronous error handling</td><td>Standard synchronous error handling</td></tr>
+</tbody></table>
+</div>
+<h2 id="general-usage-and-examples"><a class="header" href="#general-usage-and-examples">General Usage and Examples</a></h2>
+<ol>
+<li>Adding an Entity (Asynchronous):</li>
+</ol>
+<pre><code class="language-csharp">// Assuming you have an instance of your repository (`repository)`)
+// and a new Product object (`product`)
+
+Task addProductTask = repository.AddAsync&lt;Product&gt;(product);
+
+// Await the task to ensure completion before proceeding (optional)
+await addProductTask;
+
+// You can continue with further operations after successful addition
+Console.WriteLine($&quot;Product '{product.Name}' added successfully.&quot;);
+</code></pre>
+<ol start="2">
+<li>Adding an Entity (Synchronous):</li>
+</ol>
+<pre><code class="language-csharp">repository.Add&lt;Product&gt;(product);
+
+// No need to await as the operation happens synchronously
+
+Console.WriteLine($&quot;Product '{product.Name}' added successfully.&quot;);
+</code></pre>
+<h2 id="modern-usage-considerations"><a class="header" href="#modern-usage-considerations">Modern Usage Considerations</a></h2>
+<ul>
+<li><strong>Asynchronous Programming Paradigm</strong>: In modern applications, <code>AddAsync</code> is generally preferred due to its responsiveness benefits. Asynchronous programming allows your application to remain interactive while data is being added.</li>
+<li><strong>Error Handling</strong>: Implement robust error handling mechanisms to gracefully handle potential exceptions during the addition process. Consider using try-catch blocks or asynchronous exception handling patterns (e.g., <code>Task.WaitAll</code> with exception propagation).</li>
+<li><strong>Entity State Tracking</strong>: In some ORMs, calling <code>Add</code> might not automatically mark the entity as &quot;added&quot; for tracking purposes. Consult your ORM's documentation for configuration details regarding entity state management.</li>
+</ul>
+<h2 id="advanced-usage-scenarios"><a class="header" href="#advanced-usage-scenarios">Advanced Usage Scenarios</a></h2>
+<ol>
+<li>Adding Multiple Entities (Asynchronous):</li>
+</ol>
+<pre><code class="language-csharp">// Assuming you have a list of Product objects (`products`)
+
+List&lt;Task&gt; addProductTasks = new List&lt;Task&gt;();
+foreach (var product in products)
+{
+    addProductTasks.Add(repository.AddAsync&lt;Product&gt;(product));
+}
+
+// Wait for all tasks to complete in parallel (or use other techniques like Task.WhenAll)
+await Task.WaitAll(addProductTasks.ToArray());
+
+Console.WriteLine($&quot;{addProductTasks.Count} products added successfully.&quot;);
+</code></pre>
+<ol start="2">
+<li>Adding Entities with Relationships (Eager Loading):</li>
+</ol>
+<p>If your entity model involves relationships, you might need to consider eager loading related entities to avoid multiple database queries. Consult your ORM's documentation for specific syntax and configuration options.</p>
+<ol start="3">
+<li>Adding Entities with Change Tracking (Optional):</li>
+</ol>
+<p>In some ORMs, enabling change tracking allows for efficient updates using methods like <code>UpdateAsync</code> or <code>Update</code>. Refer to your ORM's documentation for configuration details.</p>
+<h2 id="remember-2"><a class="header" href="#remember-2">Remember:</a></h2>
+<ul>
+<li>Prioritize <code>AddAsync</code> for UI-centric applications to maintain responsiveness.</li>
+<li>Choose <code>Add</code> for background tasks or scenarios where immediate data manipulation is critical.</li>
+<li>Leverage asynchronous programming for a more modern and efficient approach.</li>
+<li>Implement proper error handling and carefully consider entity state tracking in your ORM.</li>
+<li>Explore advanced techniques like adding multiple entities, eager loading, and change tracking when necessary.</li>
+</ul>
+<p>By understanding the nuances of <code>AddAsync</code> and <code>Add</code>, you can effectively manage entity creation within your modern applications, ensuring responsiveness, efficiency, and error resilience.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="understanding-addrangeasync-asynchronous-and-addrange-synchronous"><a class="header" href="#understanding-addrangeasync-asynchronous-and-addrange-synchronous">Understanding <code>AddRangeAsync</code> (Asynchronous) and <code>AddRange</code> (Synchronous)</a></h2>
+<ul>
+<li><strong>Core Purpose</strong>: Both methods empower you to add a collection of entities to your persistence layer (often a database) managed by your Object-Relational Mapper (ORM) or data access layer in a single operation.</li>
+<li><strong>Key Distinction</strong>: <code>AddRangeAsync</code> operates asynchronously, enhancing responsiveness in UI-centric applications by not blocking the UI thread. <code>AddRange</code> works synchronously, completing the operation in the current thread.</li>
+</ul>
+<h2 id="choosing-your-champion-addrangeasync-vs-addrange"><a class="header" href="#choosing-your-champion-addrangeasync-vs-addrange">Choosing Your Champion: AddRangeAsync vs. AddRange</a></h2>
+<p>Here's a breakdown to help you decide:</p>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>AddRangeAsync</th><th>AddRange</th></tr></thead><tbody>
+<tr><td>Execution</td><td>Asynchronous</td><td>Synchronous</td></tr>
+<tr><td>UI Responsiveness</td><td>Maintains responsiveness</td><td>Might block the UI thread</td></tr>
+<tr><td>Use Cases</td><td>User interactions, background processes</td><td>Background tasks, immediate data processing</td></tr>
+<tr><td>Performance (Network)</td><td>Potentially better for high latency networks</td><td>Might be slightly faster on local networks</td></tr>
+<tr><td>Error Handling</td><td>Requires proper asynchronous error handling</td><td>Standard synchronous error handling</td></tr>
+</tbody></table>
+</div>
+<h2 id="general-usage-and-examples-1"><a class="header" href="#general-usage-and-examples-1">General Usage and Examples</a></h2>
+<ol>
+<li>Adding a Collection of Entities (Asynchronous):</li>
+</ol>
+<pre><code class="language-csharp">// Assuming you have an instance of your repository (`repository`)
+// and a collection of Product objects (`products`)
+
+Task addProductsTask = repository.AddRangeAsync&lt;Product&gt;(products);
+
+// Await the task to ensure completion before proceeding (optional)
+await addProductsTask;
+
+// You can continue with further operations after successful addition
+Console.WriteLine($&quot;{products.Count} products added successfully.&quot;);
+</code></pre>
+<ol start="2">
+<li>Adding a Collection of Entities (Synchronous):</li>
+</ol>
+<pre><code class="language-csharp">repository.AddRange&lt;Product&gt;(products);
+
+// No need to await as the operation happens synchronously
+
+Console.WriteLine($&quot;{products.Count} products added successfully.&quot;);
+</code></pre>
+<h2 id="modern-usage-considerations-1"><a class="header" href="#modern-usage-considerations-1">Modern Usage Considerations:</a></h2>
+<ul>
+<li><strong>Asynchronous Programming Paradigm</strong>: In modern applications, <code>AddRangeAsyn</code> is generally preferred due to its responsiveness benefits. Asynchronous programming allows your application to remain interactive while data is being added.</li>
+<li><strong>Error Handling</strong>: Implement robust error handling mechanisms to gracefully handle potential exceptions during the addition process. Use try-catch blocks or asynchronous error handling patterns (e.g., <code>Task.WaitAll</code> with exception propagation).</li>
+<li><strong>Entity State Tracking</strong>: In some ORMs, calling <code>AddRange</code> might not automatically mark the entities as &quot;added&quot; for tracking purposes. Consult your ORM's documentation for configuration details regarding entity state management.</li>
+</ul>
+<h2 id="advanced-usage-scenarios-1"><a class="header" href="#advanced-usage-scenarios-1">Advanced Usage Scenarios</a></h2>
+<ol>
+<li>Adding Entities with Relationships (Eager Loading):</li>
+</ol>
+<p>If your entity model involves relationships, you might need to consider eager loading related entities to avoid multiple database queries. Consult your ORM's documentation for specific syntax and configuration options.</p>
+<ol start="2">
+<li>Adding Entities with Change Tracking (Optional):</li>
+</ol>
+<p>In some ORMs, enabling change tracking allows for efficient updates using methods like UpdateAsync or UpdateRange. Refer to your ORM's documentation for configuration details.</p>
+<h2 id="additional-considerations-for-modern-applications"><a class="header" href="#additional-considerations-for-modern-applications">Additional Considerations for Modern Applications:</a></h2>
+<ul>
+<li><strong>Bulk Operations</strong>: Some ORMs might offer specialized bulk insertion methods for even greater performance when dealing with very large datasets.</li>
+<li><strong>Batching</strong>: Consider breaking down massive collections into smaller batches for AddRangeAsync calls to manage memory usage and potential timeouts.</li>
+<li><strong>Transactions</strong>: If your addition operation involves multiple entities and needs to be atomic (all succeed or all fail), utilize transactions provided by your ORM.</li>
+</ul>
+<h2 id="remember-3"><a class="header" href="#remember-3">Remember</a></h2>
+<ul>
+<li>Prioritize <code>AddRangeAsync</code> for UI-centric applications to maintain responsiveness when adding collections of entities.</li>
+<li>Choose <code>AddRange</code> for background tasks or scenarios where immediate data manipulation is critical.</li>
+<li>Leverage asynchronous programming for a more modern and efficient approach.</li>
+<li>Implement proper error handling and carefully consider entity state tracking in your ORM.</li>
+<li>Explore advanced techniques like eager loading, change tracking, bulk operations, batching, and transactions when necessary.</li>
+</ul>
+<p>By effectively using <code>AddRangeAsync</code> and <code>AddRange</code>, you can significantly improve the efficiency and scalability of your modern applications when bulk adding entities.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="understanding-updateasync-asynchronous-and-update-synchronous"><a class="header" href="#understanding-updateasync-asynchronous-and-update-synchronous">Understanding <code>UpdateAsync</code> (Asynchronous) and <code>Update</code> (Synchronous):</a></h2>
+<ul>
+<li><strong>Core Purpose</strong>: Both methods empower you to modify existing entities within your persistence layer (often a database) managed by your Object-Relational Mapper (ORM) or data access layer.</li>
+<li><strong>Key Distinction</strong>: <code>UpdateAsync</code> operates asynchronously, enhancing responsiveness in UI-centric applications by not blocking the UI thread. <code>Update</code> works synchronously, completing the operation in the current thread.</li>
+</ul>
+<h2 id="choosing-your-champion-updateasync-vs-update"><a class="header" href="#choosing-your-champion-updateasync-vs-update">Choosing Your Champion: UpdateAsync vs. Update</a></h2>
+<p>Here's a breakdown to help you decide:</p>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>UpdateAsync</th><th>Update</th></tr></thead><tbody>
+<tr><td>Execution</td><td>Asynchronous</td><td>Synchronous</td></tr>
+<tr><td>UI Responsiveness</td><td>Maintains responsiveness</td><td>Might block the UI thread</td></tr>
+<tr><td>Use Cases</td><td>User interactions, background processes</td><td>Background tasks, immediate data processing</td></tr>
+<tr><td>Performance (Network)</td><td>Potentially better for high latency networks</td><td>Might be slightly faster on local networks</td></tr>
+<tr><td>Error Handling</td><td>Requires proper asynchronous error handling</td><td>Standard synchronous error handling</td></tr>
+</tbody></table>
+</div>
+<h2 id="general-usage-and-examples-2"><a class="header" href="#general-usage-and-examples-2">General Usage and Examples:</a></h2>
+<ol>
+<li>Updating an Entity (Asynchronous):</li>
+</ol>
+<pre><code class="language-csharp">// Assuming you have an instance of your repository (`repository`)
+// and a modified Product object (`modifiedProduct`)
+
+Task updateProductTask = repository.UpdateAsync&lt;Product&gt;(modifiedProduct);
+
+// Await the task to ensure completion before proceeding (optional)
+await updateProductTask;
+
+Console.WriteLine($&quot;Product '{modifiedProduct.Name}' updated successfully.&quot;);
+</code></pre>
+<ol start="2">
+<li>Updating an Entity (Synchronous):</li>
+</ol>
+<pre><code class="language-csharp">repository.Update&lt;Product&gt;(modifiedProduct);
+
+// No need to await as the operation happens synchronously
+
+Console.WriteLine($&quot;Product '{modifiedProduct.Name}' updated successfully.&quot;);
+</code></pre>
+<h2 id="modern-usage-considerations-2"><a class="header" href="#modern-usage-considerations-2">Modern Usage Considerations</a></h2>
+<ul>
+<li><strong>Asynchronous Programming Paradigm</strong>: In modern applications, <code>UpdateAsync</code> is generally preferred due to its responsiveness benefits. Asynchronous programming allows your application to remain interactive while data is being updated.</li>
+<li><strong>Change Tracking</strong>: Many ORMs rely on change tracking to identify which properties of an entity have been modified. Ensure your ORM has change tracking enabled for <code>UpdateAsync </code>and <code>Update</code> to work effectively. Refer to your ORM's documentation for configuration details.</li>
+<li><strong>Detached Entities</strong>: If you're working with entities that haven't been loaded from the database (detached entities), you might need to attach them to the context before calling <code>UpdateAsync</code> or <code>Update</code>. Consult your ORM's documentation for specific guidance on attaching entities.</li>
+<li><strong>Optimistic Concurrency</strong>: Implement optimistic concurrency control if your application allows multiple users to modify the same entity simultaneously to prevent data inconsistencies. This often involves leveraging properties like timestamps or version numbers within your entity model.</li>
+</ul>
+<h2 id="advanced-usage-scenarios-2"><a class="header" href="#advanced-usage-scenarios-2">Advanced Usage Scenarios</a></h2>
+<ol>
+<li>Updating Entities with Relationships:</li>
+</ol>
+<p>Updating entities with relationships might involve cascading updates to related entities. Consult your ORM's documentation for configuration options and potential performance considerations.</p>
+<ol start="2">
+<li>Updating Multiple Entities:</li>
+</ol>
+<p>Some ORMs offer bulk update operations for improved performance when dealing with large datasets. Research methods like <code>UpdateRangeAsync</code> or <code>UpdateRange</code> provided by your ORM.</p>
+<h2 id="remember-4"><a class="header" href="#remember-4">Remember</a></h2>
+<ul>
+<li>Prioritize <code>UpdateAsync</code> for UI-centric applications to maintain responsiveness when updating entities.</li>
+<li>Choose <code>Update</code> for background tasks or scenarios where immediate confirmation of update success is crucial.</li>
+<li>Leverage asynchronous programming for a more modern and efficient approach.</li>
+<li>Ensure change tracking is enabled in your ORM and consider attaching detached entities if necessary.</li>
+<li>Implement optimistic concurrency control for scenarios with potential concurrent modifications.</li>
+<li>Explore advanced techniques like bulk updates and relationship handling depending on your ORM and use case.</li>
+</ul>
+<p>By effectively using <code>UpdateAsync</code> and <code>Update</code>, you can streamline the process of modifying data within your modern applications, ensuring responsiveness and data consistency.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="understanding-updaterangeasync-asynchronous-and-updaterange-synchronous"><a class="header" href="#understanding-updaterangeasync-asynchronous-and-updaterange-synchronous">Understanding <code>UpdateRangeAsync</code> (Asynchronous) and <code>UpdateRange</code> (Synchronous):</a></h2>
+<ul>
+<li><strong>Core Purpose</strong>: Both methods empower you to efficiently modify a collection of entities within your persistence layer (often a database) managed by your Object-Relational Mapper (ORM) or data access layer in a single operation.</li>
+<li><strong>Key Distinction</strong>: <code>UpdateRangeAsync</code> operates asynchronously, enhancing responsiveness in UI-centric applications by not blocking the UI thread. <code>UpdateRange</code> works synchronously, completing the operation in the current thread.</li>
+</ul>
+<h2 id="choosing-your-champion-updaterangeasync-vs-updaterange"><a class="header" href="#choosing-your-champion-updaterangeasync-vs-updaterange">Choosing Your Champion: <code>UpdateRangeAsync</code> vs. <code>UpdateRange</code></a></h2>
+<p>Here's a breakdown to help you decide:</p>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>UpdateRangeAsync</th><th>UpdateRange</th></tr></thead><tbody>
+<tr><td>Execution</td><td>Asynchronous</td><td>Synchronous</td></tr>
+<tr><td>UI Responsiveness</td><td>Maintains responsiveness</td><td>Might block the UI thread</td></tr>
+<tr><td>Use Cases</td><td>User interactions, background processes</td><td>Background tasks, immediate data processing</td></tr>
+<tr><td>Performance (Network)</td><td>Potentially better for high latency networks</td><td>Might be slightly faster on local networks</td></tr>
+<tr><td>Error Handling</td><td>Requires proper asynchronous error handling</td><td>Standard synchronous error handling</td></tr>
+</tbody></table>
+</div>
+<h2 id="general-usage-and-examples-3"><a class="header" href="#general-usage-and-examples-3">General Usage and Examples:</a></h2>
+<ol>
+<li>Updating a Collection of Entities (Asynchronous):</li>
+</ol>
+<pre><code class="language-csharp">// Assuming you have an instance of your repository (`repository`)
+// and a collection of modified Product objects (`modifiedProducts`)
+
+Task updateProductsTask = repository.UpdateRangeAsync&lt;Product&gt;(modifiedProducts);
+
+// Await the task to ensure completion before proceeding (optional)
+await updateProductsTask;
+
+Console.WriteLine($&quot;{modifiedProducts.Count} products updated successfully.&quot;);
+</code></pre>
+<ol start="2">
+<li>Updating a Collection of Entities (Synchronous):</li>
+</ol>
+<pre><code class="language-csharp">repository.UpdateRange&lt;Product&gt;(modifiedProducts);
+
+// No need to await as the operation happens synchronously
+
+Console.WriteLine($&quot;{modifiedProducts.Count} products updated successfully.&quot;);
+</code></pre>
+<h2 id="modern-usage-considerations-3"><a class="header" href="#modern-usage-considerations-3">Modern Usage Considerations</a></h2>
+<ul>
+<li><strong>Asynchronous Programming Paradigm</strong>: In modern applications, <code>UpdateRangeAsync</code> is generally preferred due to its responsiveness benefits. Asynchronous programming allows your application to remain interactive while data is being updated.</li>
+<li><strong>Change Tracking</strong>: Many ORMs rely on change tracking to identify modified properties within entities. Ensure change tracking is enabled for <code>UpdateRangeAsync</code> and <code>UpdateRange</code> to work effectively. Refer to your ORM's documentation for configuration details.</li>
+<li><strong>Detached Entities</strong>: If you're working with detached entities (not loaded from the database), you might need to attach them to the context before calling <code>UpdateRangeAsync</code> or <code>UpdateRange</code>. Consult your ORM's documentation for specific guidance on attaching entities.</li>
+<li><strong>Optimistic Concurrency</strong>: Implement optimistic concurrency control if your application allows multiple users to modify the same entities simultaneously to prevent data inconsistencies. This often involves leveraging properties like timestamps or version numbers within your entity model.</li>
+</ul>
+<h2 id="advanced-usage-scenarios-in-modern-applications"><a class="header" href="#advanced-usage-scenarios-in-modern-applications">Advanced Usage Scenarios in Modern Applications</a></h2>
+<ol>
+<li>Updating Entities with Relationships:</li>
+</ol>
+<p>Updating entities with relationships might involve cascading updates to related entities. Consult your ORM's documentation for configuration options and potential performance considerations. Here are some modern approaches:</p>
+<ul>
+<li><strong>Eager Loading</strong>: Load related entities when fetching data to minimize subsequent database queries.</li>
+<li><strong>Explicit Configuration</strong>: Define how your ORM should handle relationship updates through configuration options provided by your ORM.</li>
+</ul>
+<ol start="2">
+<li>Updating Large Datasets:</li>
+</ol>
+<ul>
+<li><strong>Bulk Operations</strong>: Some ORMs offer specialized bulk update methods for enhanced performance when dealing with very large datasets. Research methods like <code>BulkUpdateAsync</code> or <code>BulkUpdate</code> provided by your ORM.</li>
+<li><strong>Batching</strong>: Consider breaking down massive collections into smaller batches for <code>UpdateRangeAsync</code> calls to manage memory usage and potential timeouts.</li>
+</ul>
+<h2 id="remember-5"><a class="header" href="#remember-5">Remember</a></h2>
+<ul>
+<li>Prioritize <code>UpdateRangeAsync</code> for UI-centric applications to maintain responsiveness when updating multiple entities.</li>
+<li>Choose <code>UpdateRange</code> for background tasks or scenarios where immediate confirmation of update success is critical.</li>
+<li>Leverage asynchronous programming for a more modern and efficient approach.</li>
+<li>Ensure change tracking is enabled in your ORM and consider attaching detached entities if necessary.</li>
+<li>Implement optimistic concurrency control for scenarios with potential concurrent modifications.</li>
+<li>Explore advanced techniques like eager loading, explicit configuration, bulk operations, and batching for performance optimization in modern applications.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="understanding-removeasync-and-remove"><a class="header" href="#understanding-removeasync-and-remove">Understanding RemoveAsync and Remove</a></h2>
+<ul>
+<li><strong>Core Purpose</strong>: Both methods serve the purpose of deleting existing entities from your persistence layer (often a database) managed by your Object-Relational Mapper (ORM) or data access layer.</li>
+<li><strong>Key Distinction</strong>: <code>RemoveAsync</code> operates asynchronously, enhancing responsiveness in UI-centric applications by not blocking the UI thread. <code>Remove</code> works synchronously, completing the operation in the current thread.</li>
+</ul>
+<h2 id="choosing-your-champion-asynchronous-vs-synchronous"><a class="header" href="#choosing-your-champion-asynchronous-vs-synchronous">Choosing Your Champion: Asynchronous vs. Synchronous</a></h2>
+<p>Here's a breakdown to help you decide:</p>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>RemoveAsync</th><th>Remove</th></tr></thead><tbody>
+<tr><td>Execution</td><td>Asynchronous</td><td>Synchronous</td></tr>
+<tr><td>UI Responsiveness</td><td>Maintains responsiveness</td><td>Might block the UI thread</td></tr>
+<tr><td>Use Cases</td><td>User interactions, background processes</td><td>Background tasks, immediate data processing</td></tr>
+<tr><td>Performance (Network)</td><td>Potentially better for high latency networks</td><td>Might be slightly faster on local networks</td></tr>
+<tr><td>Error Handling</td><td>Requires proper asynchronous error handling</td><td>Standard synchronous error handling</td></tr>
+</tbody></table>
+</div>
+<h2 id="general-usage-and-examples-4"><a class="header" href="#general-usage-and-examples-4">General Usage and Examples</a></h2>
+<ol>
+<li>Deleting an Entity (Asynchronous):</li>
+</ol>
+<pre><code class="language-csharp">// Assuming you have an instance of your repository (`repository`)
+// and an entity to delete (`productToDelete`)
+
+Task removeProductTask = repository.RemoveAsync&lt;Product&gt;(productToDelete);
+
+// Await the task to ensure completion before proceeding (optional)
+await removeProductTask;
+
+Console.WriteLine($&quot;Product '{productToDelete.Name}' deleted successfully.&quot;);
+</code></pre>
+<ol start="2">
+<li>Deleting an Entity (Synchronous):</li>
+</ol>
+<pre><code class="language-csharp">repository.Remove&lt;Product&gt;(productToDelete);
+
+// No need to await as the operation happens synchronously
+
+Console.WriteLine($&quot;Product '{productToDelete.Name}' deleted successfully.&quot;);
+</code></pre>
+<h2 id="modern-usage-considerations-4"><a class="header" href="#modern-usage-considerations-4">Modern Usage Considerations</a></h2>
+<ul>
+<li><strong>Asynchronous Programming Paradigm</strong>: In modern applications, <code>RemoveAsync</code> is generally preferred due to its responsiveness benefits. Asynchronous programming allows your application to remain interactive while data is being deleted.</li>
+<li><strong>Entity State Tracking</strong>: Many ORMs rely on entity state tracking to determine which entities need to be deleted. Ensure entity state tracking is enabled for <code>RemoveAsync</code> and <code>Remove</code> to work effectively. Refer to your ORM's documentation for configuration details.</li>
+<li><strong>Cascading Deletes</strong>: If your entity model involves relationships with cascading deletes (deleting related entities when a parent entity is deleted), configure your ORM appropriately.</li>
+<li><strong>Optimistic Concurrency</strong>: Implement optimistic concurrency control if your application allows multiple users to delete the same entity simultaneously to prevent data inconsistencies (often using timestamps or version numbers).</li>
+</ul>
+<h2 id="advanced-usage-scenarios-in-modern-applications-1"><a class="header" href="#advanced-usage-scenarios-in-modern-applications-1">Advanced Usage Scenarios in Modern Applications</a></h2>
+<ol>
+<li>Deleting Entities with Relationships:</li>
+</ol>
+<p>Deletion of entities with relationships might involve cascading deletes to related entities. Consult your ORM's documentation and configure cascading behavior as needed. Here are some modern approaches:
+- <strong>Explicit Configuration</strong>: Define how your ORM should handle related entity deletions through configuration options provided by your ORM.
+- <strong>Soft Deletes</strong>: Instead of permanent deletion, consider marking entities as &quot;deleted&quot; to maintain a historical record.</p>
+<ol start="2">
+<li>Deleting Large Datasets:
+<ul>
+<li><strong>Bulk Operations</strong>: Some ORMs offer specialized bulk delete methods for improved performance when dealing with very large datasets. Research methods like BulkDeleteAsync or BulkDelete provided by your ORM.</li>
+<li><strong>Batching</strong>: Consider breaking down massive collections into smaller batches for RemoveAsync calls to manage memory usage and potential timeouts.</li>
+</ul>
+</li>
+</ol>
+<h2 id="remember-6"><a class="header" href="#remember-6">Remember</a></h2>
+<ul>
+<li>Prioritize <code>RemoveAsync</code> for UI-centric applications to maintain responsiveness when deleting entities.</li>
+<li>Choose <code>Remove</code> for background tasks or scenarios where immediate confirmation of deletion success is critical.</li>
+<li>Leverage asynchronous programming for a more modern and efficient approach.</li>
+<li>Ensure entity state tracking is enabled in your ORM and consider cascading deletes or soft deletes depending on your use case.</li>
+<li>Implement optimistic concurrency control for scenarios with potential concurrent modifications.</li>
+<li>Explore advanced techniques like explicit configuration, soft deletes, bulk operations, and batching for performance optimization in modern applications.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="understanding-removerangeasync-and-removerange"><a class="header" href="#understanding-removerangeasync-and-removerange">Understanding RemoveRangeAsync and RemoveRange</a></h2>
+<ul>
+<li><strong>Core Purpose</strong>: Both methods empower you to efficiently delete a collection of entities from your persistence layer (often a database) managed by your Object-Relational Mapper (ORM) or data access layer in a single operation.</li>
+<li><strong>Key Distinction</strong>: <code>RemoveRangeAsync</code> operates asynchronously, enhancing responsiveness in UI-centric applications by not blocking the UI thread. <code>RemoveRange</code> works synchronously, completing the operation in the current thread.</li>
+</ul>
+<h2 id="choosing-your-champion-asynchronous-vs-synchronous-1"><a class="header" href="#choosing-your-champion-asynchronous-vs-synchronous-1">Choosing Your Champion: Asynchronous vs. Synchronous</a></h2>
+<p>Here's a breakdown to help you decide:</p>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>RemoveRangeAsync</th><th>RemoveRange</th></tr></thead><tbody>
+<tr><td>Execution</td><td>Asynchronous</td><td>Synchronous</td></tr>
+<tr><td>UI Responsiveness</td><td>Maintains responsiveness</td><td>Might block the UI thread</td></tr>
+<tr><td>Use Cases</td><td>User interactions, background processes</td><td>Background tasks, immediate data processing</td></tr>
+<tr><td>Performance (Network)</td><td>Potentially better for high latency networks</td><td>Might be slightly faster on local networks</td></tr>
+<tr><td>Error Handling</td><td>Requires proper asynchronous error handling</td><td>Standard synchronous error handling</td></tr>
+</tbody></table>
+</div>
+<h2 id="general-usage-and-examples-5"><a class="header" href="#general-usage-and-examples-5">General Usage and Examples</a></h2>
+<ol>
+<li>Deleting a Collection of Entities (Asynchronous):</li>
+</ol>
+<pre><code class="language-csharp">// Assuming you have an instance of your repository (`repository`)
+// and a collection of entities to delete (`productsToDelete`)
+
+Task removeProductsTask = repository.RemoveRangeAsync&lt;Product&gt;(productsToDelete);
+
+// Await the task to ensure completion before proceeding (optional)
+await removeProductsTask;
+
+Console.WriteLine($&quot;{productsToDelete.Count} products deleted successfully.&quot;);
+</code></pre>
+<ol start="2">
+<li>Deleting a Collection of Entities (Synchronous):</li>
+</ol>
+<pre><code class="language-csharp">repository.RemoveRange&lt;Product&gt;(productsToDelete);
+
+// No need to await as the operation happens synchronously
+
+Console.WriteLine($&quot;{productsToDelete.Count} products deleted successfully.&quot;);
+</code></pre>
+<h2 id="modern-usage-considerations-5"><a class="header" href="#modern-usage-considerations-5">Modern Usage Considerations:</a></h2>
+<ul>
+<li><strong>Asynchronous Programming Paradigm</strong>: In modern applications, <code>RemoveRangeAsync</code> is generally preferred due to its responsiveness benefits. Asynchronous programming allows your application to remain interactive while data is being deleted.</li>
+<li><strong>Entity State Tracking</strong>: Many ORMs rely on entity state tracking to determine which entities need to be deleted. Ensure entity state tracking is enabled for <code>RemoveRangeAsync</code> and <code>RemoveRange</code> to work effectively. Refer to your ORM's documentation for configuration details.</li>
+<li><strong>Cascading Deletes</strong>: If your entity model involves relationships with cascading deletes (deleting related entities when a parent entity is deleted), configure your ORM appropriately.</li>
+<li><strong>Optimistic Concurrency</strong>: Implement optimistic concurrency control if your application allows multiple users to delete the same entities simultaneously to prevent data inconsistencies (often using timestamps or version numbers).</li>
+</ul>
+<h2 id="advanced-usage-scenarios-in-modern-applications-2"><a class="header" href="#advanced-usage-scenarios-in-modern-applications-2">Advanced Usage Scenarios in Modern Applications</a></h2>
+<ol>
+<li>Deleting Entities with Relationships:</li>
+</ol>
+<p>Deletion of entities with relationships might involve cascading deletes to related entities. Consult your ORM's documentation and configure cascading behavior as needed. Here are some modern approaches:
+- <strong>Explicit Configuration</strong>: Define how your ORM should handle related entity deletions through configuration options provided by your ORM.
+- <strong>Soft Deletes</strong>: Instead of permanent deletion, consider marking entities as &quot;deleted&quot; to maintain a historical record.</p>
+<ol start="2">
+<li>
+<p>Deleting Large Datasets:</p>
+<ul>
+<li><strong>Bulk Operations</strong>: Some ORMs offer specialized bulk delete methods for improved performance when dealing with very large datasets. Research methods like <code>BulkDeleteAsync</code> or <code>BulkDelete</code> provided by your ORM.</li>
+<li><strong>Batching</strong>: Consider breaking down massive collections into smaller batches for <code>RemoveRangeAsync</code> calls to manage memory usage and potential timeouts.</li>
+</ul>
+</li>
+</ol>
+<h2 id="remember-7"><a class="header" href="#remember-7">Remember</a></h2>
+<ul>
+<li>Prioritize <code>RemoveRangeAsync</code> for UI-centric applications to maintain responsiveness when deleting entities.</li>
+<li>Choose <code>RemoveRange</code> for background tasks or scenarios where immediate confirmation of deletion success is crucial.</li>
+<li>Leverage asynchronous programming for a more modern and efficient approach.</li>
+<li>Ensure entity state tracking is enabled in your ORM and consider cascading deletes or soft deletes depending on your use case.</li>
+<li>Implement optimistic concurrency control for scenarios with potential concurrent modifications.</li>
+<li>Explore advanced techniques like explicit configuration, soft deletes, bulk operations, and batching for performance optimization in modern applications.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="i-narrative-approach-the-quest-for-existence"><a class="header" href="#i-narrative-approach-the-quest-for-existence">I. Narrative Approach: The Quest for Existence</a></h2>
+<p>In the realm of data persistence, a critical task emerges – determining the elusive existence of an entity. Two mighty methods rise to the challenge: <code>ExistsAsync</code> and <code>Exists</code>.</p>
+<ul>
+<li><strong>ExistsAsync</strong>: The swift and silent knight, operating asynchronously to keep your user interface responsive while searching for the entity. It's ideal for scenarios where immediate results are less critical than maintaining user interaction.</li>
+<li><strong>Exists</strong>: The direct and efficient warrior, completing the existence check synchronously. It excels in background tasks or situations where immediate confirmation of presence (or absence) is vital.</li>
+</ul>
+<h2 id="ii-code-centric-approach-unleashing-the-power"><a class="header" href="#ii-code-centric-approach-unleashing-the-power">II. Code-Centric Approach: Unleashing the Power</a></h2>
+<p>Ready to embark on your existence quest? Here's how to wield ExistsAsync and Exists in battle:</p>
+<pre><code class="language-csharp">// Asynchronous Approach (ExistsAsync)
+Task&lt;bool&gt; productExistsTask = repository.ExistsAsync&lt;Product&gt;(predicate);
+bool productExists = await productExistsTask;
+
+// Synchronous Approach (Exists)
+bool productExists = repository.Exists&lt;Product&gt;(predicate);
+
+// Replace &quot;predicate&quot; with your desired existence condition (e.g., p =&gt; p.Name == &quot;Magic Sword&quot;)
+</code></pre>
+<h2 id="iii-modern-considerations-optimizing-your-approach"><a class="header" href="#iii-modern-considerations-optimizing-your-approach">III. Modern Considerations: Optimizing Your Approach</a></h2>
+<ul>
+<li><strong>Asynchronous Advantage</strong>: In today's interactive world, <code>ExistsAsync</code> reigns supreme for most applications. Prioritize it to maintain a smooth user experience.</li>
+<li><strong>Conditional Logic</strong>: Both methods utilize lambda expressions for flexible existence checks. Craft the perfect &quot;predicate&quot; to pinpoint the entity you seek.</li>
+<li><strong>Performance Optimization</strong>: For speed-critical situations, consider <code>Exists</code> cautiously. If further operations on the entity are needed upon confirmation, fetching might be a better choice (ORM-dependent).</li>
+<li><strong>Null Warriors</strong>: Beware of null values! Ensure your existence condition handles them gracefully to avoid unexpected results.</li>
+</ul>
+<h2 id="iv-advanced-strategies-beyond-the-basics"><a class="header" href="#iv-advanced-strategies-beyond-the-basics">IV. Advanced Strategies: Beyond the Basics</a></h2>
+<ul>
+<li><strong>Count-Based Existence Check</strong>: Explore methods like <code>AnyAsync</code> (or <code>Any</code>) that directly return a boolean based on condition fulfillment. It might be a more concise alternative.</li>
+<li><strong>Caching the Elusive</strong>: For frequently checked existence conditions, consider caching results for a limited time to boost performance. Remember to implement invalidation strategies to combat data staleness.</li>
+</ul>
+<h2 id="v-remember-adventurer"><a class="header" href="#v-remember-adventurer">V. Remember, Adventurer</a></h2>
+<ul>
+<li>Use <code>ExistsAsync</code> for responsiveness, <code>Exists</code> for immediate confirmation, and leverage asynchronous programming for a modern touch.</li>
+<li>Define clear existence conditions with lambda expressions.</li>
+<li>Use <code>Exists</code> for performance cautiously (consider fetching in some scenarios).</li>
+<li>Handle null values effectively.</li>
+<li>Explore advanced techniques like count-based checks and caching for specific use cases.</li>
+<li>Unit test your existence checks for accuracy and robustness.</li>
+</ul>
+<p><strong>By mastering these approaches, you can successfully navigate the realm of data existence and ensure your applications interact with data efficiently and elegantly.</strong></p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="i-count-your-blessings-asynchronously-and-synchronously"><a class="header" href="#i-count-your-blessings-asynchronously-and-synchronously">I. Count Your Blessings (Asynchronously and Synchronously)</a></h2>
+<p>In the world of data, counting entities efficiently is a necessary skill. Two valiant methods rise to the challenge: <code>CountAsync</code> and <code>Count</code>.</p>
+<ul>
+<li>
+<p><strong>CountAsync</strong>: The responsive champion, operating asynchronously to keep your user interface (UI) fluid while fetching the entity count. It shines in situations where immediate results are less crucial than maintaining user interaction.</p>
+</li>
+<li>
+<p><strong>Count</strong>: The swift warrior, completing the count synchronously. It excels in background tasks or scenarios where immediate confirmation of the total entity count is paramount.</p>
+</li>
+</ul>
+<h2 id="ii-wielding-the-counting-power-code-examples"><a class="header" href="#ii-wielding-the-counting-power-code-examples">II. Wielding the Counting Power (Code Examples)</a></h2>
+<p>Ready to unleash the counting power? Here's how to command CountAsync and Count in your code:</p>
+<p>Asynchronous Approach (CountAsync):</p>
+<pre><code class="language-csharp">// Assuming you have an instance of your repository (`repository`)
+
+Task&lt;int&gt; productCountTask = repository.CountAsync&lt;Product&gt;();
+int productCount = await productCountTask;
+
+Console.WriteLine($&quot;There are {productCount} products in the database.&quot;);
+</code></pre>
+<p>Synchronous Approach (Count):</p>
+<pre><code class="language-csharp">int productCount = repository.Count&lt;Product&gt;();
+
+Console.WriteLine($&quot;There are {productCount} products in the database.&quot;);
+</code></pre>
+<h2 id="iii-modern-considerations-counting-with-finesse"><a class="header" href="#iii-modern-considerations-counting-with-finesse">III. Modern Considerations: Counting with Finesse</a></h2>
+<ul>
+<li><strong>Asynchronous First</strong>: In modern interactive applications, <code>CountAsync</code> is generally preferred due to its responsiveness benefits. Prioritize it for a smooth user experience.</li>
+<li><strong>Conditional Counting</strong>: Both methods accept lambda expressions (predicates) to filter entities before counting. Tailor the &quot;predicate&quot; to count entities meeting specific criteria.</li>
+<li><strong>Performance Optimization</strong>: For speed-critical scenarios, consider <code>Count</code> cautiously. If more complex operations involving the entities are needed, fetching might be a better choice (ORM-dependent). However, <code>Count</code> can be faster on local networks.</li>
+<li><strong>Empty Collections</strong>: Ensure your code handles empty collections gracefully to avoid potential issues.</li>
+</ul>
+<h2 id="iv-advanced-strategies-beyond-the-basics-1"><a class="header" href="#iv-advanced-strategies-beyond-the-basics-1">IV. Advanced Strategies: Beyond the Basics</a></h2>
+<ul>
+<li><strong>Alternative Approaches</strong>: Explore methods like <code>LongCountAsync</code> (or <code>LongCount</code>) for counting entities exceeding <code>int</code> capacity.</li>
+<li><strong>Caching Counts</strong>: For frequently accessed entity counts, consider caching results for a limited time to improve performance. Remember to implement invalidation strategies to combat data staleness.</li>
+</ul>
+<h2 id="v-remember-young-data-warrior"><a class="header" href="#v-remember-young-data-warrior">V. Remember, Young Data Warrior</a></h2>
+<ul>
+<li>Use <code>CountAsync</code> for responsiveness, <code>Count</code> for immediate confirmation.</li>
+<li>Leverage asynchronous programming for a modern touch.</li>
+<li>Define clear counting conditions with lambda expressions (predicates).</li>
+<li>Use <code>Count</code> for performance cautiously (consider fetching in some scenarios).</li>
+<li>Handle empty collections gracefully.</li>
+<li>Explore advanced techniques like `LongCountAsync and caching for specific use cases.</li>
+<li>Unit test your counting methods for accuracy and robustness.</li>
+<li>By mastering these methods, you can efficiently count entities in your modern applications, optimizing performance and enhancing user experience.</li>
+</ul>
+<h2 id="bonus-conversational-approach"><a class="header" href="#bonus-conversational-approach">Bonus: Conversational Approach</a></h2>
+<p><strong>Ever wonder how many products you have in stock?</strong> Well, fret no more! Our data warriors, <code>CountAsync</code> and <code>Count</code>, are here to help. <code>CountAsync</code> works like a stealthy scout, quietly counting entities in the background while keeping your application responsive. <code>Count</code>, on the other hand, is a speedy warrior, offering the count in a flash, but might momentarily halt other tasks.</p>
+<p><strong>Which one should you choose?</strong> If you prioritize a smooth user experience, <code>CountAsync</code> is your champion. But if immediate confirmation of the count is essential, <code>Count</code> has your back.</p>
+<p><strong>Remember, use the right tool for the job, and always count your blessings (entities), asynchronously or synchronously!</strong></p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="i-counting-beyond-limits-longcountasync-and-longcount"><a class="header" href="#i-counting-beyond-limits-longcountasync-and-longcount">I. Counting Beyond Limits: <code>LongCountAsync</code> and <code>LongCount</code></a></h2>
+<p>In the vast realm of data, int sometimes restrains our counting ambitions. Fear not, for LongCountAsync and LongCount emerge as valiant champions, capable of counting entities beyond the limitations of an int.</p>
+<ul>
+<li>
+<p><strong>LongCountAsync</strong>: The responsive champion, operating asynchronously to keep your user interface (UI) fluid while fetching the entity count. It shines in situations where immediate results are less crucial than maintaining user interaction.</p>
+</li>
+<li>
+<p><strong>LongCount</strong>: The swift warrior, completing the count synchronously. It excels in background tasks or scenarios where immediate confirmation of the total entity count is paramount.</p>
+</li>
+</ul>
+<h2 id="ii-wielding-the-long-count-code-examples"><a class="header" href="#ii-wielding-the-long-count-code-examples">II. Wielding the Long Count (Code Examples)</a></h2>
+<p>Ready to unleash the power of long counting? Here's how to command LongCountAsync and LongCount in your code:</p>
+<p><strong>Asynchronous Approach (LongCountAsync):</strong></p>
+<pre><code class="language-csharp">// Assuming you have an instance of your repository (`repository`)
+
+Task&lt;long&gt; productCountTask = repository.LongCountAsync&lt;Product&gt;();
+long productCount = await productCountTask;
+
+Console.WriteLine($&quot;There are {productCount} products in the database.&quot;);
+</code></pre>
+<p><strong>Synchronous Approach (LongCount):</strong></p>
+<pre><code class="language-csharp">long productCount = repository.LongCount&lt;Product&gt;();
+
+Console.WriteLine($&quot;There are {productCount} products in the database.&quot;);
+</code></pre>
+<h2 id="iii-modern-considerations-counting-with-finesse-1"><a class="header" href="#iii-modern-considerations-counting-with-finesse-1">III. Modern Considerations: Counting with Finesse</a></h2>
+<ul>
+<li><strong>Asynchronous First</strong>: In modern interactive applications, LongCountAsync is generally preferred due to its responsiveness benefits. Prioritize it for a smooth user experience.</li>
+<li><strong>Conditional Counting</strong>: Both methods accept lambda expressions (predicates) to filter entities before counting. Tailor the &quot;predicate&quot; to count entities meeting specific criteria. For large datasets, consider filtering on the server-side using your ORM's capabilities.</li>
+<li><strong>Performance Optimization</strong>: For speed-critical scenarios, consider alternative approaches like fetching and counting locally if feasible. However, LongCount can be faster on local networks.</li>
+<li><strong>Empty Collections</strong>: Ensure your code handles empty collections gracefully to avoid potential issues.</li>
+</ul>
+<h2 id="iv-advanced-strategies-beyond-the-basics-2"><a class="header" href="#iv-advanced-strategies-beyond-the-basics-2">IV. Advanced Strategies: Beyond the Basics</a></h2>
+<ul>
+<li><strong>Alternative Approaches</strong>: Explore server-side cursors or paging mechanisms provided by your ORM for handling exceptionally large datasets efficiently.</li>
+</ul>
+<h2 id="v-remember-young-data-warrior-1"><a class="header" href="#v-remember-young-data-warrior-1">V. Remember, Young Data Warrior</a></h2>
+<ul>
+<li>Use <code>LongCountAsync</code> for responsiveness, <code>LongCount</code> for immediate confirmation.</li>
+<li>Leverage asynchronous programming for a modern touch.</li>
+<li>Define clear counting conditions with lambda expressions (predicates).</li>
+<li>Consider alternative approaches (fetching and local counting) or server-side optimizations for massive datasets.</li>
+<li>Handle empty collections gracefully.</li>
+<li>Unit test your counting methods for accuracy and robustness.</li>
+<li>By mastering these methods, you can efficiently count massive datasets in your modern applications, optimizing performance and enhancing user experience.</li>
+</ul>
+<h2 id="bonus-focus-on-error-handling"><a class="header" href="#bonus-focus-on-error-handling">Bonus: Focus on Error Handling</a></h2>
+<p>Counting a large number of entities can introduce potential errors or timeouts. Here's a modern approach that emphasizes error handling:</p>
+<pre><code class="language-csharp">try
+{
+  Task&lt;long&gt; productCountTask = repository.LongCountAsync&lt;Product&gt;(predicate);
+  long productCount = await productCountTask;
+  Console.WriteLine($&quot;There are {productCount} products in the database.&quot;);
+}
+catch (Exception ex)
+{
+  Console.WriteLine($&quot;Error occurred while counting products: {ex.Message}&quot;);
+  // Implement appropriate error handling logic (e.g., logging, retries)
+}
+</code></pre>
+<p><strong>Remember, robust error handling is crucial in modern development to ensure your application gracefully handles unexpected situations.</strong></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="i-counting-with-clarity-unveiling-entity-distribution-countbyasync--countby"><a class="header" href="#i-counting-with-clarity-unveiling-entity-distribution-countbyasync--countby">I. Counting with Clarity: Unveiling Entity Distribution (<code>CountByAsync</code> &amp; <code>CountBy</code>)</a></h1>
+<p>In the realm of data exploration, understanding entity distribution is key. CountByAsync and CountBy emerge as valiant warriors, empowering you to efficiently count entities grouped by a specific property.</p>
+<ul>
+<li>
+<p><strong>CountByAsync</strong>: The responsive champion, operating asynchronously to keep your user interface (UI) fluid while fetching grouped entity counts. It excels in user interactions or situations where immediate results are less critical than maintaining user experience.</p>
+</li>
+<li>
+<p><strong>CountBy</strong>: The swift warrior, completing the grouped count synchronously. It shines in background tasks or scenarios where immediate confirmation of the distribution is paramount.</p>
+</li>
+</ul>
+<h2 id="ii-wielding-the-grouped-count-code-examples"><a class="header" href="#ii-wielding-the-grouped-count-code-examples">II. Wielding the Grouped Count (Code Examples)</a></h2>
+<p>Ready to unleash the power of grouped counting? Here's how to command CountByAsync and CountBy in your code:</p>
+<p><strong>Asynchronous Approach (CountByAsync):</strong></p>
+<pre><code class="language-csharp">// Assuming you have an instance of your repository (`repository`)
+
+Task&lt;IDictionary&lt;string, int&gt;&gt; productCountByCategoryTask = repository.CountByAsync&lt;Product&gt;(p =&gt; p.Category);
+IDictionary&lt;string, int&gt; productCountByCategory = await productCountByCategoryTask;
+
+Console.WriteLine(&quot;Product count by category:&quot;);
+foreach (var kvp in productCountByCategory)
+{
+  Console.WriteLine($&quot;- {kvp.Key}: {kvp.Value}&quot;);
+}
+</code></pre>
+<p><strong>Synchronous Approach (CountBy):</strong></p>
+<pre><code class="language-csharp">IDictionary&lt;string, int&gt; productCountByCategory = repository.CountBy&lt;Product&gt;(p =&gt; p.Category);
+
+Console.WriteLine(&quot;Product count by category:&quot;);
+foreach (var kvp in productCountByCategory)
+{
+  Console.WriteLine($&quot;- {kvp.Key}: {kvp.Value}&quot;);
+}
+</code></pre>
+<h2 id="iii-modern-considerations-counting-with-finesse-2"><a class="header" href="#iii-modern-considerations-counting-with-finesse-2">III. Modern Considerations: Counting with Finesse</a></h2>
+<ul>
+<li><strong>Asynchronous First</strong>: In modern interactive applications, <code>CountByAsync</code> is generally preferred due to its responsiveness benefits. Prioritize it for a smooth user experience.</li>
+<li><strong>Grouping Expression</strong>: Both methods accept lambda expressions to specify the property by which entities should be grouped. Tailor the expression to group by the desired property (e.g., <code>p =&gt; p.Category, p =&gt; p.PriceRange</code>).</li>
+<li><strong>Performance Optimization</strong>: For very large datasets, consider server-side aggregation capabilities provided by your ORM to optimize performance.</li>
+<li><strong>Empty Collections</strong>: Ensure your code handles empty collections or groups with zero entities gracefully to avoid potential issues.</li>
+</ul>
+<h2 id="iv-advanced-strategies-beyond-the-basics-3"><a class="header" href="#iv-advanced-strategies-beyond-the-basics-3">IV. Advanced Strategies: Beyond the Basics</a></h2>
+<ul>
+<li><strong>Alternative Approaches</strong>: Explore server-side aggregation pipelines or reporting tools for complex grouping and calculations on massive datasets.</li>
+</ul>
+<h2 id="v-remember-young-data-warrior-2"><a class="header" href="#v-remember-young-data-warrior-2">V. Remember, Young Data Warrior</a></h2>
+<ul>
+<li>Use <code>CountByAsync</code> for responsiveness, <code>CountBy</code> for immediate confirmation.</li>
+<li>Leverage asynchronous programming for a modern touch.</li>
+<li>Define clear grouping expressions with lambda expressions.</li>
+<li>Consider server-side aggregation for very large datasets.</li>
+<li>Handle empty collections and groups with zero entities gracefully.</li>
+<li>Unit test your counting methods for accuracy and robustness.</li>
+</ul>
+<p>By mastering these methods, you can effectively analyze entity distribution in your modern applications, gaining valuable insights into your data and optimizing user experience.</p>
+<h2 id="bonus-focus-on-asynchronous-workflows"><a class="header" href="#bonus-focus-on-asynchronous-workflows">Bonus: Focus on Asynchronous Workflows</a></h2>
+<p>In modern development, asynchronous programming is crucial. Here's an example emphasizing asynchronous workflows:</p>
+<pre><code class="language-csharp">async Task AnalyzeProductDistributionAsync()
+{
+  try
+  {
+    IDictionary&lt;string, int&gt; productCountByCategory = await repository.CountByAsync&lt;Product&gt;(p =&gt; p.Category);
+    // Process and display the grouped counts
+  }
+  catch (Exception ex)
+  {
+    Console.WriteLine($&quot;Error occurred while counting products by category: {ex.Message}&quot;);
+    // Implement appropriate error handling logic (e.g., logging, retries)
+  }
+}
+</code></pre>
+<p><strong>Remember, asynchronous programming patterns ensure your application remains responsive while fetching grouped entity counts, enhancing the overall user experience.</strong></p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="understanding-savechangesasync-and-savechanges"><a class="header" href="#understanding-savechangesasync-and-savechanges">Understanding <code>SaveChangesAsync</code> and <code>SaveChanges</code></a></h2>
+<ul>
+<li><strong>Core Purpose</strong>: Both methods serve the critical task of persisting changes made to entities (like inserts, updates, and deletes) within your Object-Relational Mapper (ORM) or data access layer to the underlying database.</li>
+<li><strong>Key Distinction</strong>: <code>SaveChangesAsync</code> operates asynchronously, enhancing responsiveness in UI-centric applications by not blocking the UI thread. <code>SaveChanges</code> works synchronously, completing the operation in the current thread.</li>
+</ul>
+<h2 id="choosing-your-champion-asynchronous-vs-synchronous-2"><a class="header" href="#choosing-your-champion-asynchronous-vs-synchronous-2">Choosing Your Champion: Asynchronous vs. Synchronous</a></h2>
+<p>Here's a breakdown to help you decide:</p>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>SaveChangesAsyc</th><th>SaveChanges</th></tr></thead><tbody>
+<tr><td>Execution</td><td>Asynchronous</td><td>Synchronous</td></tr>
+<tr><td>UI Responsiveness</td><td>Maintains responsiveness</td><td>Might block the UI thread</td></tr>
+<tr><td>Use Cases</td><td>User interactions, background processes</td><td>Background tasks, immediate data processing</td></tr>
+<tr><td>Performance (Network)</td><td>Potentially better for high latency networks</td><td>Might be slightly faster on local networks</td></tr>
+<tr><td>Error Handling</td><td>Requires proper asynchronous error handling</td><td>Standard synchronous error handling</td></tr>
+</tbody></table>
+</div>
+<h2 id="general-usage-and-examples-6"><a class="header" href="#general-usage-and-examples-6">General Usage and Examples:</a></h2>
+<ol>
+<li>Saving Changes Asynchronously (Modern Approach):</li>
+</ol>
+<pre><code class="language-csharp">// Assuming you have an instance of your context (`_context`)
+
+try
+{
+  await _context.SaveChangesAsync();
+  Console.WriteLine(&quot;Changes saved successfully.&quot;);
+}
+catch (Exception ex)
+{
+  Console.WriteLine($&quot;Error saving changes: {ex.Message}&quot;);
+  // Implement appropriate error handling logic (e.g., logging, retries)
+}
+</code></pre>
+<ol start="2">
+<li>Saving Changes Synchronously (Consider for Specific Scenarios):</li>
+</ol>
+<pre><code class="language-cshapr">try
+{
+  _context.SaveChanges();
+  Console.WriteLine(&quot;Changes saved successfully.&quot;);
+}
+catch (Exception ex)
+{
+  Console.WriteLine($&quot;Error saving changes: {ex.Message}&quot;);
+  // Implement appropriate error handling logic (e.g., logging, retries)
+}
+</code></pre>
+<h2 id="modern-usage-considerations-6"><a class="header" href="#modern-usage-considerations-6">Modern Usage Considerations</a></h2>
+<ul>
+<li><strong>Asynchronous Programming Paradigm</strong>: In modern applications, <code>SaveChangesAsync</code> is generally preferred due to its responsiveness benefits. Asynchronous programming allows your application to remain interactive while saving data.</li>
+<li><strong>Entity State Tracking</strong>: Many ORMs rely on entity state tracking to determine which entities need to be saved (inserted, updated, or deleted). Ensure entity state tracking is enabled for <code>SaveChangesAsync</code> and <code>SaveChanges</code> to work effectively. Refer to your ORM's documentation for configuration details.</li>
+<li><strong>Transactions</strong>: For operations requiring multiple changes to be atomic (all succeed or all fail), consider using transactions provided by your ORM.</li>
+<li><strong>Optimistic Concurrency</strong>: Implement optimistic concurrency control if your application allows multiple users to modify the same entity simultaneously to prevent data inconsistencies (often using timestamps or version numbers).</li>
+<li><strong>Validation</strong>: Enforce data validation in your entities or at the context level to ensure data integrity before saving.</li>
+</ul>
+<h2 id="advanced-usage-scenarios-in-modern-applications-3"><a class="header" href="#advanced-usage-scenarios-in-modern-applications-3">Advanced Usage Scenarios in Modern Applications:</a></h2>
+<ul>
+<li><strong>Bulk Operations</strong>: Some ORMs offer specialized bulk save methods for improved performance when dealing with very large datasets. Research methods like <code>BulkSaveChangesAsync</code> or <code>BulkSaveChanges</code> provided by your ORM.</li>
+<li><strong>Change Tracking and Save Changes Tracking</strong>: Explore more granular change tracking and save changes tracking capabilities offered by some ORMs to optimize performance and avoid unnecessary saves.</li>
+</ul>
+<h2 id="remember-8"><a class="header" href="#remember-8">Remember</a></h2>
+<ul>
+<li>Prioritize <code>SaveChangesAsync</code> for UI-centric applications to maintain responsiveness.</li>
+<li>Choose <code>SaveChanges</code> for background tasks or scenarios where immediate confirmation of successful saving is crucial.</li>
+<li>Leverage asynchronous programming for a modern and efficient approach.</li>
+<li>Ensure entity state tracking is enabled and consider using transactions and optimistic concurrency if necessary.</li>
+<li>Implement data validation for data integrity.</li>
+<li>Explore advanced techniques like bulk operations and change tracking for performance optimization in specific use cases.</li>
+<li>Unit test your save methods to ensure data persistence functionality works as expected.</li>
+</ul>
+<h2 id="additional-considerations-for-modern-development"><a class="header" href="#additional-considerations-for-modern-development">Additional Considerations for Modern Development:</a></h2>
+<ul>
+<li><strong>Error Handling</strong>: Implement robust error handling mechanisms to gracefully handle potential exceptions during saving. Use try-catch blocks or asynchronous error handling patterns (e.g., <code>Task.WaitAll</code> with exception propagation).</li>
+<li><strong>Logging</strong>: Consider logging save operations (successes and failures) to aid in debugging and monitoring application behavior.</li>
+</ul>
+<p><strong>By following these guidelines, you can effectively persist data changes in your modern applications, ensuring responsiveness, data integrity, and optimal performance.</strong></p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="general-functionality-1-10"><a class="header" href="#general-functionality-1-10">General Functionality (1-10):</a></h2>
+<blockquote>
+<ol>
+<li>What is Buzruk.GenericRepository?
+Answer: Buzruk.GenericRepository is likely a generic implementation of the repository pattern, designed to simplify data access logic for various entity types in your application.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>What are the advantages of using Buzruk.GenericRepository?
+Answer: Potential benefits include:
+Reduced code duplication: Avoid writing repetitive data access code for each entity type.
+Improved maintainability: Easier to modify and update data access logic in a centralized location.
+Separation of concerns: Clearer separation between business logic and data access code.
+Potential performance optimizations: Repositories might provide efficient data retrieval or caching mechanisms.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>Does Buzruk.GenericRepository support all possible data access operations?
+Answer: It likely supports core CRUD (Create, Read, Update, Delete) operations for the entities it manages. It might also offer additional functionalities like filtering, sorting, paging, or eager loading depending on the implementation.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="4">
+<li>What data access technologies does Buzruk.GenericRepository work with?
+Answer: The answer depends on the specific implementation. It might be designed for a particular ORM (Object-Relational Mapper) like Entity Framework or NHibernate, or offer a more generic approach compatible with various data access layers (ADO.NET, Dapper, etc.). Refer to the Buzruk.GenericRepository documentation for details.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="5">
+<li>Can Buzruk.GenericRepository be used with NoSQL databases?
+Answer: It depends on the implementation. While some generic repositories might be adaptable to NoSQL data stores, others might be primarily focused on relational databases. Check the documentation for supported data access technologies.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="6">
+<li>Is Buzruk.GenericRepository thread-safe?
+Answer: Thread safety depends on the implementation and the underlying data access layer. If working with multi-threaded applications, ensure proper synchronization mechanisms are in place when using the repository's methods concurrently.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="7">
+<li>Does Buzruk.GenericRepository handle transactions?
+Answer: Transaction management might not be directly handled by the generic repository itself. It might rely on the underlying data access layer's transaction capabilities. Explore the data access layer's support for transactions and how to integrate them with your repository usage.
+How can I implement optimistic concurrency control with </li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="8">
+<li>Buzruk.GenericRepository?
+Answer: Buzruk.GenericRepository might not provide built-in support for optimistic concurrency control. Consider implementing optimistic concurrency at the entity level (e.g., using version numbers or timestamps) and incorporating it into your repository methods for updates.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="9">
+<li>Can I use Buzruk.GenericRepository for bulk data operations (inserts, updates, or deletes)?
+Answer: The answer depends on the implementation. Some repositories might offer methods for bulk operations, while others might require manual construction of bulk queries. Refer to the documentation for available bulk operation functionalities.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="10">
+<li>Does Buzruk.GenericRepository integrate with caching mechanisms?
+Answer: Buzruk.GenericRepository itself might not provide caching functionalities. You'll likely need to implement caching logic at a higher level in your application, potentially using the repository's methods to retrieve data and storing it in a cache for performance optimization.</li>
+</ol>
+</blockquote>
+<h2 id="entity-support-and-usage-11-20"><a class="header" href="#entity-support-and-usage-11-20">Entity Support and Usage (11-20):</a></h2>
+<blockquote>
+<ol start="11">
+<li>Can I use Buzruk.GenericRepository with any entity type?
+Answer: Buzruk.GenericRepository likely utilizes generics to work with various entity types. You might need to configure it to work with your specific entities.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="12">
+<li>How do I configure Buzruk.GenericRepository to work with my custom entity class?
+Answer: The configuration process depends on the specific implementation. It might involve inheritance from a base repository class, specifying the entity type during repository creation, or providing mappings for entity properties to database columns. Consult the Buzruk.GenericRepository documentation for details.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="13">
+<li>How do I perform basic CRUD operations (create, read, update, delete) on entities using the repository?
+Answer: The repository likely provides methods like Add, GetById, Update, and Delete for CRUD operations. The specific method names and their parameters might vary. Consult the Buzruk.GenericRepository documentation for usage examples.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="14">
+<li>Can I perform filtering or sorting on entities retrieved from the repository?
+Answer: The answer depends on the implementation. Some repositories might offer built-in filtering and sorting functionalities through method parameters or query builders. Others might require manual construction of filter expressions or sorting criteria within your application code. Refer to the Buzruk.GenericRepository documentation for available filtering and sorting options.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="15">
+<li>How can I retrieve a collection of entities based on specific criteria?
+Answer: Buzruk.GenericRepository might offer methods that accept filtering criteria as parameters. These criteria could be expressed as lambda expressions, predicates, or custom query objects, depending on the implementation.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="16">
+<li>Does Buzruk.GenericRepository support eager loading of related entities?
+Answer: The answer depends on the implementation and the underlying data access layer. Some repositories might integrate with ORMs that provide eager loading functionalities, while others might require manual handling of eager loading logic within your application code.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="17">
+<li>Can I use Buzruk.GenericRepository with inheritance hierarchies (base classes and derived classes)?
+Answer: The answer depends on the implementation. Some repositories might handle inheritance seamlessly, while others might require specific configuration or considerations for working with entity hierarchies. Refer to the documentation for guidance on inheritance support.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="18">
+<li>How do I map entity properties to database columns in Buzruk.GenericRepository?
+Answer: Mapping might be handled automatically if using an ORM, or you might need to provide explicit mappings between entity properties and database columns if using a more generic data access layer. Consult the documentation for details on property-to-column mapping.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="19">
+<li>What happens if I try to use a method from Buzruk.GenericRepository that's not supported for my specific data access technology?
+Answer: The behavior depends on the implementation. It might throw an exception, return a null value, or log an error message. It's crucial to ensure your data access technology is compatible with the functionalities you're trying to use with the repository.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="20">
+<li>How can I unit test code that utilizes Buzruk.GenericRepository?
+Answer: Buzruk.GenericRepository's generic nature and potential reliance on dependencies like the data access layer make it suitable for unit testing. You can mock or stub the repository's dependencies (e.g., the data access layer) to isolate and test your application logic that interacts with the repository.</li>
+</ol>
+</blockquote>
+<h2 id="advanced-usage-and-integration-21-30"><a class="header" href="#advanced-usage-and-integration-21-30">Advanced Usage and Integration (21-30):</a></h2>
+<blockquote>
+<ol start="21">
+<li>Can I customize the behavior of Buzruk.GenericRepository methods?
+Answer: The extent of customization depends on the implementation. Some repositories might offer options for intercepting method calls or providing custom logic through inheritance or configuration. Refer to the documentation for customization possibilities.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="22">
+<li>How can I implement logging or auditing functionality within Buzruk.GenericRepository?
+Answer: Buzruk.GenericRepository itself might not provide built-in logging or auditing functionalities. You could implement logging or auditing logic at a higher level in your application, potentially using aspects or wrappers around repository methods to capture relevant data during data access operations.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="23">
+<li>Does Buzruk.GenericRepository support change tracking for entities?
+Answer: The answer depends on the implementation. Some repositories might offer rudimentary change tracking capabilities, while others might rely on external libraries or mechanisms for tracking entity changes.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="24">
+<li>Can I use Buzruk.GenericRepository with event sourcing patterns?
+Answer: Buzruk.GenericRepository might not be directly designed for event sourcing, which focuses on persisting a sequence of events rather than the current state of entities. However, you could potentially adapt the repository to work with event data if your implementation allows for storing and retrieving event objects.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="25">
+<li>How can I integrate Buzruk.GenericRepository with security mechanisms (e.g., user permissions)?
+Answer: Buzruk.GenericRepository itself might not handle security. You'll likely need to integrate security checks and authorization logic at a higher level in your application, potentially filtering data retrieval or restricting certain repository methods based on user roles or permissions.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="26">
+<li>Does Buzruk.GenericRepository offer any functionalities for data validation?
+Answer: Data validation is typically handled at a higher level in your application. You could perform validation on entity objects before passing them to the repository for persistence, or leverage data annotations or validation rules supported by your data access layer.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="27">
+<li>Can I use Buzruk.GenericRepository for asynchronous data access operations?
+Answer: The answer depends on the implementation. Some repositories might be adapted for asynchronous operations if the underlying data access layer supports asynchronous methods. Refer to the documentation for guidance on asynchronous data access.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="28">
+<li>How can I monitor the performance of Buzruk.GenericRepository access operations?
+Answer: Monitoring performance might not be directly supported by Buzruk.GenericRepository. You could implement performance monitoring logic at a higher level in your application, potentially using profiling tools or logging timings of repository method calls to identify performance bottlenecks.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="29">
+<li>Does Buzruk.GenericRepository provide any tools for database migration or schema management?
+Answer: Buzruk.GenericRepository is likely focused on data access logic and might not handle database schema management. You might need to use separate tools or libraries for database migrations and schema changes, potentially integrating them with your deployment process.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="30">
+<li>Can I extend Buzruk.GenericRepository to support additional functionalities specific to my application?
+Answer: The answer depends on the implementation. Some repositories might be designed to be extensible through inheritance or plugin mechanisms. If the implementation allows for extension, you could potentially create custom repository classes that inherit from Buzruk.GenericRepository and add application-specific functionalities.</li>
+</ol>
+</blockquote>
+<h1 id="error-handling-and-troubleshooting-31-35"><a class="header" href="#error-handling-and-troubleshooting-31-35">Error Handling and Troubleshooting (31-35):</a></h1>
+<blockquote>
+<ol start="31">
+<li>What types of exceptions might I encounter when using Buzruk.GenericRepository?
+Answer: The specific exceptions depend on the implementation and the underlying data access layer. Potential exceptions could include data access errors (e.g., connection failures), validation errors, or errors related to unsupported operations.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="32">
+<li>How can I handle exceptions thrown by Buzruk.GenericRepository methods?
+Implement proper exception handling within your application code that interacts with the repository. Catch relevant exceptions, log error details, and provide informative error messages to users when necessary.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="33">
+<li>I'm getting a &quot;null&quot; value returned from a Buzruk.GenericRepository method. What could be wrong?
+Answer: A null return value might indicate that the data you're trying to retrieve doesn't exist. Double-check your query criteria or filtering conditions. It could also be a result of an error during data access, so examine any exception messages or logs for clues.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="34">
+<li>I'm encountering a specific exception message. How can I interpret it?
+The interpretation depends on the specific exception message. Consult the documentation for Buzruk.GenericRepository and the underlying data access layer for explanations of common error messages and troubleshooting steps.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="35">
+<li>How can I debug issues related to Buzruk.GenericRepository usage?
+Utilize debugging tools provided by your development environment. Set breakpoints in your code to inspect the state of variables and the behavior of repository method calls. Logging can also be helpful for capturing details about repository interactions.</li>
+</ol>
+</blockquote>
+<h2 id="best-practices-and-design-considerations-36-45"><a class="header" href="#best-practices-and-design-considerations-36-45">Best Practices and Design Considerations (36-45):</a></h2>
+<blockquote>
+<ol start="36">
+<li>What are some best practices for using Buzruk.GenericRepository effectively?
+Adhere to the repository pattern principles: separation of concerns, abstraction of data access logic, and promoting code reuse.
+Clearly define your entity models and their mappings to database tables (if applicable).
+Implement proper error handling and validation logic within your application code.
+Consider caching strategies for frequently accessed data to improve performance.
+Write unit tests to ensure the correctness of your code that interacts with the repository.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="37">
+<li>When should I consider using Buzruk.GenericRepository, and are there any cases where it might not be suitable?
+Buzruk.GenericRepository is beneficial for promoting code reuse and reducing boilerplate code for data access in applications with multiple entity types.
+It might not be ideal for very simple applications with limited data access needs, or for scenarios requiring highly specialized data access logic that doesn't fit the generic repository pattern.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="38">
+<li>Are there any potential drawbacks or limitations to using Buzruk.GenericRepository?
+Overuse of the generic repository pattern could lead to overly complex code if not applied thoughtfully.
+The repository might introduce an extra layer of abstraction, potentially impacting performance in some cases.
+Ensure the implementation is well-tested and documented to avoid introducing maintenance overhead.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="39">
+<li>How can I optimize the performance of data access operations using Buzruk.GenericRepository?
+Leverage caching strategies for frequently accessed data.
+Consider using efficient filtering and sorting techniques within your repository queries.
+Profile your application to identify performance bottlenecks and optimize accordingly.
+If the underlying data access layer supports it, explore asynchronous data access patterns for improved responsiveness.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="40">
+<li>Are there any alternative patterns or approaches to consider instead of Buzruk.GenericRepository?
+The Data Mapper pattern offers a similar level of abstraction for data access, but might require more manual configuration for each entity type.
+The Active Record pattern provides a more object-oriented approach to data access, but can lead to tighter coupling between your entities and the database schema.
+Domain-Driven Design (DDD) promotes separation of concerns at a higher level, with repositories being just one aspect of the overall data access strategy.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="41">
+<li>Does Buzruk.GenericRepository support working with complex queries or stored procedures?
+Answer: The answer depends on the implementation. Some repositories might offer ways to execute raw SQL queries or stored procedures, while others might be designed for simpler data access operations. Refer to the documentation for supported query execution options.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="42">
+<li>Can I use Buzruk.GenericRepository with in-memory data stores (e.g., caching providers)?
+Answer: The answer depends on whether the implementation is designed for relational databases or can be adapted for other data access technologies. If Buzruk.GenericRepository abstracts data access logic sufficiently, it might be adaptable to work with in-memory data stores with appropriate configuration.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="43">
+<li>How can I leverage dependency injection with Buzruk.GenericRepository?
+Answer: Buzruk.GenericRepository might benefit from dependency injection to manage its dependencies (e.g., the data access layer). Inject the necessary dependencies into the repository constructor to promote loose coupling and testability.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="44">
+<li>Does Buzruk.GenericRepository provide any support for internationalization (i18n) or localization (l10n) of data?
+Answer: Buzruk.GenericRepository itself might not handle i18n/l10n concerns. You'll likely need to implement separate mechanisms within your application to handle data localization or retrieval of language-specific information.
+How can I ensure data consistency when using </li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="45">
+<li>Buzruk.GenericRepository with concurrent access from multiple users or threads?
+Answer: Buzruk.GenericRepository might not provide built-in mechanisms for data consistency. You'll need to rely on the underlying data access layer's concurrency features (e.g., transactions, locking) or implement custom logic within your application to handle concurrent access and maintain data integrity.</li>
+</ol>
+</blockquote>
+<h2 id="testing-and-deployment-considerations-46-60"><a class="header" href="#testing-and-deployment-considerations-46-60">Testing and Deployment Considerations (46-60):</a></h2>
+<blockquote>
+<ol start="46">
+<li>How can I effectively unit test code that interacts with Buzruk.GenericRepository?
+Leverage the generic nature of the repository and its potential dependencies on interfaces. Use mocking frameworks to isolate the repository's behavior from the rest of your application code and test specific repository methods in a controlled environment.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="47">
+<li>Are there any integration tests or end-to-end tests recommended for applications using Buzruk.GenericRepository?
+Yes, integration tests are crucial to verify the interaction between the repository, the data access layer, and your application logic in a more realistic environment. Consider end-to-end tests to ensure overall application functionality, including data persistence and retrieval.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="48">
+<li>How can I handle database schema changes when deploying an application that uses Buzruk.GenericRepository?
+Buzruk.GenericRepository itself might not manage schema changes. You'll need to have a separate strategy for database migrations, potentially using tools or scripts to update the database schema in a controlled manner during deployments.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="49">
+<li>Does Buzruk.GenericRepository offer any features for data encryption or security at rest?
+Answer: Data encryption and security are typically handled by the underlying data access layer or the database itself. Buzruk.GenericRepository might not be directly involved in data security, but ensure the chosen data access technology provides appropriate security features for your application's needs.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="50">
+<li>Are there any performance considerations when deploying an application that uses Buzruk.GenericRepository in a production environment?
+The generic repository pattern might introduce some overhead compared to direct data access. Profile your application to identify potential performance bottlenecks and optimize accordingly. Consider caching strategies, efficient query construction, and proper indexing in the database for optimal performance.</li>
+</ol>
+</blockquote>
+<h2 id="beyond-the-basics-51-60"><a class="header" href="#beyond-the-basics-51-60">Beyond the Basics (51-60):</a></h2>
+<blockquote>
+<ol start="51">
+<li>Can I use Buzruk.GenericRepository with NoSQL databases or document databases?
+The answer depends on the implementation. While some generic repositories might be adaptable to NoSQL data stores, others might be primarily focused on relational databases. Explore community resources or documentation for potential NoSQL support.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="52">
+<li>Does Buzruk.GenericRepository integrate with messaging systems or event sourcing patterns?
+Buzruk.GenericRepository might not be directly designed for these purposes. Messaging systems or event sourcing typically involve persisting data in a different format than traditional relational database tables. You might need to consider alternative approaches or adaptations of the repository pattern for these scenarios.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="53">
+<li>How can I leverage code generation tools with Buzruk.GenericRepository?
+The answer depends on the implementation and whether it's designed for code generation. Some libraries or frameworks might offer code generation capabilities for repositories based on entity definitions. Explore available tools and ensure compatibility with Buzruk.GenericRepository.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="54">
+<li>Are there any community resources or support available for Buzruk.GenericRepository?
+The availability of community resources depends on the source of Buzruk.GenericRepository. Look for documentation, wikis, forums, or issue trackers associated with the repository. If it's an open-source project, there might be a community around it for support and discussions.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="55">
+<li>How can I contribute to the development of Buzruk.GenericRepository?
+If Buzruk.GenericRepository is open-source, you can contribute by reporting bugs, suggesting improvements, or even submitting pull requests with code changes. Refer to the project's contribution guidelines for specific instructions.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="56">
+<li>What are some future trends or potential advancements related to generic repository patterns?
+Generic repositories might evolve to support more complex data access scenarios, including NoSQL databases and event sourcing.
+Increased focus on code generation and integration with other design patterns like Domain-Driven Design (DDD).
+Potential advancements in performance optimization and data consistency mechanisms for generic repositories.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="57">
+<li>Is Buzruk.GenericRepository actively maintained and updated?
+The answer depends on the source of Buzruk.GenericRepository. If it's an open-source project, check the project's activity level, recent commits, and community discussions to gauge its maintenance status.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="58">
+<li>Are there any alternative generic repository libraries or 
+frameworks I can consider instead of Buzruk.GenericRepository?
+Yes, there might be other generic repository implementations available depending on your programming language and data access needs. Explore popular choices like NHibernate's IRepository or Entity Framework Core's IRepository interface.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="59">
+<li>When should I consider creating my own custom generic repository implementation instead of using Buzruk.GenericRepository?
+If Buzruk.GenericRepository lacks specific functionalities or doesn't align well with your application's architecture, consider a custom implementation. However, weigh the benefits of code reuse and community support against the development effort involved in creating your own repository.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="60">
+<li>How can I stay updated on the latest developments and best practices related to generic repository patterns?
+Follow relevant blogs, forums, or communities focused on software design patterns and data access technologies. Attend conferences or workshops related to software architecture and best practices.</li>
+</ol>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="troubleshooting-like-a-pro-a-guide-for-buzrukgenericrepository"><a class="header" href="#troubleshooting-like-a-pro-a-guide-for-buzrukgenericrepository">Troubleshooting Like a Pro: A Guide for Buzruk.GenericRepository</a></h1>
+<p>Confronting issues with Buzruk.GenericRepository can be a hurdle, but with a systematic approach, you can become a troubleshooting whiz. This guide equips you with valuable strategies and techniques to pinpoint, isolate, and resolve problems related to Buzruk.GenericRepository effectively.</p>
+<h2 id="1-gather-information-setting-the-stage-for-buzrukgenericrepository"><a class="header" href="#1-gather-information-setting-the-stage-for-buzrukgenericrepository">1. Gather Information: Setting the Stage for Buzruk.GenericRepository</a></h2>
+<ul>
+<li><strong>Define the Buzruk.GenericRepository Issue</strong>: Clearly articulate the problem you're encountering when using Buzruk.GenericRepository. Be specific about error messages, unexpected behavior, or issues with entity data access.</li>
+<li><strong>Reproduce the Buzruk.GenericRepository Problem</strong>: Can you consistently replicate the problem? If so, document the exact steps to reproduce it. This helps isolate the root cause within Buzruk.GenericRepository's functionalities.</li>
+<li><strong>Context Matters</strong>: Consider the environment where the Buzruk.GenericRepository issue occurs. Has anything recently changed in your system configuration, software updates, or data access layer implementation?</li>
+</ul>
+<h2 id="2-leverage-available-resources-for-buzrukgenericrepository"><a class="header" href="#2-leverage-available-resources-for-buzrukgenericrepository">2. Leverage Available Resources for Buzruk.GenericRepository</a></h2>
+<ul>
+<li><strong>Consult Buzruk.GenericRepository Documentation</strong>: The official documentation for Buzruk.GenericRepository is your primary resource. Look for troubleshooting guides, FAQs, or known issues related to the specific functionalities you're using.</li>
+<li><strong>Search Buzruk.GenericRepository Online Communities</strong>: Online forums, user groups, and websites dedicated to the programming language or framework where Buzruk.GenericRepository is used can be valuable. Search for discussions related to Buzruk.GenericRepository problems and learn from others' experiences.</li>
+<li><strong>Error Messages Hold Clues</strong>: Don't disregard error messages! They often provide valuable information about the nature of the problem within Buzruk.GenericRepository. Research error codes or messages specific to Buzruk.GenericRepository to understand their meaning.</li>
+</ul>
+<h2 id="3-the-power-of-logic-divide-and-conquer-for-buzrukgenericrepository"><a class="header" href="#3-the-power-of-logic-divide-and-conquer-for-buzrukgenericrepository">3. The Power of Logic: Divide and Conquer for Buzruk.GenericRepository</a></h2>
+<ul>
+<li><strong>Isolate the Buzruk.GenericRepository Problem</strong>: Can you narrow down the issue to a specific Buzruk.GenericRepository method, entity type, or data access operation? This helps determine where to focus your troubleshooting efforts within Buzruk.GenericRepository.</li>
+<li><strong>Test Incrementally</strong>: Make controlled changes to your code that interacts with Buzruk.GenericRepository. After each change, test if the problem persists. This helps identify the specific change that triggered the issue related to Buzruk.GenericRepository.</li>
+<li><strong>Think Like Buzruk.GenericRepository</strong>: Consider the sequence of events leading up to the problem. What actions or changes might have caused the issue within Buzruk.GenericRepository's logic?</li>
+</ul>
+<h2 id="4-be-methodical-and-maintain-records-when-troubleshooting-buzrukgenericrepository"><a class="header" href="#4-be-methodical-and-maintain-records-when-troubleshooting-buzrukgenericrepository">4. Be Methodical and Maintain Records When Troubleshooting Buzruk.GenericRepository</a></h2>
+<ul>
+<li><strong>Document Your Buzruk.GenericRepository Troubleshooting Steps</strong>: Keep a record of the steps you've taken to troubleshoot the problem with Buzruk.GenericRepository. This helps you track progress and avoid revisiting solutions that didn't work.</li>
+<li><strong>Revert Changes</strong>: If a specific change introduced the problem while using Buzruk.GenericRepository, revert it to its previous state and test again.</li>
+<li><strong>Think Outside the Box for Buzruk.GenericRepository</strong>: Don't be afraid to experiment with different approaches. Sometimes an unconventional solution can resolve a stubborn issue within Buzruk.GenericRepository.</li>
+</ul>
+<h2 id="5-when-in-doubt-seek-help-with-buzrukgenericrepository"><a class="header" href="#5-when-in-doubt-seek-help-with-buzrukgenericrepository">5. When in Doubt, Seek Help with Buzruk.GenericRepository</a></h2>
+<ul>
+<li><strong>Don't Be Afraid to Ask for Help with Buzruk.GenericRepository</strong>: If you've exhausted your resources, reach out to technical support for Buzruk.GenericRepository (if available), community experts for the programming language or framework, or colleagues for assistance. Clearly explain the issue, the troubleshooting steps you've taken related to Buzruk.GenericRepository, and any relevant information you've gathered.</li>
+<li><strong>Collaboration is Key for Buzruk.GenericRepository</strong>: Troubleshooting can be a collaborative process. Sharing your findings with others can lead to new insights and potential solutions for problems with Buzruk.GenericRepository.</li>
+</ul>
+<h2 id="bonus-tips-for-buzrukgenericrepository-troubleshooting"><a class="header" href="#bonus-tips-for-buzrukgenericrepository-troubleshooting">Bonus Tips for Buzruk.GenericRepository Troubleshooting</a></h2>
+<ul>
+<li><strong>Stay Calm</strong>: Panic rarely solves problems. Approach the issue with a clear head and a methodical approach when troubleshooting Buzruk.GenericRepository.</li>
+<li><strong>Take Breaks</strong>: Sometimes stepping away from the problem for a while can help you come back with fresh eyes to troubleshoot Buzruk.GenericRepository more effectively.</li>
+<li><strong>Learn from Your Buzruk.GenericRepository Troubleshooting Experience</strong>: Every troubleshooting experience is an opportunity to learn and improve your problem-solving skills related to Buzruk.GenericRepository.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contributingmd---buzrukgenericrepository"><a class="header" href="#contributingmd---buzrukgenericrepository">CONTRIBUTING.md - Buzruk.GenericRepository</a></h1>
+<p><strong>We appreciate your interest in contributing to Buzruk.GenericRepository! This document outlines how you can contribute to the project and ensure a smooth collaboration process.</strong></p>
+<h2 id="how-to-contribute"><a class="header" href="#how-to-contribute">How to Contribute</a></h2>
+<p>There are several ways you can contribute to Buzruk.GenericRepository:</p>
+<ul>
+<li><strong>Bug Reports</strong>: If you encounter a bug, please create a new issue on GitHub. Be sure to provide a clear description of the bug, including steps to reproduce it if possible.</li>
+<li><strong>Feature Requests</strong>: Do you have an idea for a new feature? Feel free to create a new issue and share your proposal. Explain the problem your feature addresses and how it can benefit the project.</li>
+<li><strong>Code Pull Requests</strong>: We welcome pull requests for bug fixes, improvements, and new features. Before submitting a pull request, please:
+<ul>
+<li>Fork the repository.</li>
+<li>Create a new branch for your feature or bug fix.</li>
+<li>Implement your changes and write unit tests for them (if applicable).</li>
+<li>Ensure your code follows the project's coding style guidelines (if any).</li>
+<li>Open a pull request and provide a clear description of your changes.</li>
+</ul>
+</li>
+<li><strong>Documentation</strong>: If you find any errors or have suggestions for improving the documentation, please create an issue or submit a pull request with your proposed changes.</li>
+</ul>
+<h2 id="coding-style"><a class="header" href="#coding-style">Coding Style</a></h2>
+<p>We recommend following consistent coding style throughout the project. If you're unsure about the preferred style, you can use tools like editorconfig to format your code.</p>
+<h2 id="unit-tests"><a class="header" href="#unit-tests">Unit Tests</a></h2>
+<p>We encourage writing unit tests for your contributions. This helps ensure the quality and maintainability of the code.</p>
+<h2 id="communication"><a class="header" href="#communication">Communication</a></h2>
+<p>We use GitHub issues for tracking bugs, features, and pull requests. Feel free to leave comments and questions on existing issues or create new ones for discussions.</p>
+<h2 id="license"><a class="header" href="#license">License</a></h2>
+<p>This project is licensed under the MIT License. Please see the LICENSE.txt file for details.</p>
+<h2 id="additional-resources"><a class="header" href="#additional-resources">Additional Resources</a></h2>
+<p><a href="https://github.com/buzurgmexrubon/Buzruk.GenericRepository/wiki">Buzruk.GenericRepository Wiki</a></p>
+<p>We are grateful for your contributions! Let's work together to make Buzruk.GenericRepository even better.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="changelogmd---buzrukgenericrepository"><a class="header" href="#changelogmd---buzrukgenericrepository">CHANGELOG.md - Buzruk.GenericRepository</a></h1>
+<h2 id="embrace-the-future-of-data-access-v100---initial-release"><a class="header" href="#embrace-the-future-of-data-access-v100---initial-release">Embrace the Future of Data Access (v1.0.0 - Initial Release)</a></h2>
+<p>This changelog chronicles the groundbreaking advancements in Buzruk.GenericRepository, the game-changing generic repository for .NET applications. Buckle up, developers, because v1.0.0 is here to revolutionize your data access experience!</p>
+<h2 id="introducing-an-asynchronous-powerhouse"><a class="header" href="#introducing-an-asynchronous-powerhouse">Introducing an Asynchronous Powerhouse:</a></h2>
+<ul>
+<li><strong>Asynchronous-First Philosophy</strong>: Ditch the wait! Core functionalities prioritize asynchronous methods for blazing-fast, non-blocking data retrieval and manipulation. Synchronous options remain available for compatibility. ⚡️</li>
+<li><strong>Effortless Bulk Operations (Async)</strong>: Supercharge performance with asynchronous AddRangeAsync and UpdateRangeAsync methods, allowing you to add or update multiple entities with unparalleled efficiency.</li>
+</ul>
+<h2 id="streamlined-data-management"><a class="header" href="#streamlined-data-management">Streamlined Data Management:</a></h2>
+<ul>
+<li><strong>Intuitive CRUD Operations</strong>: A comprehensive suite of methods like GetAsync, GetPagedAsync, AddAsync, AddRangeAsync, UpdateAsync, and more simplifies CRUD (Create, Read, Update, Delete) operations for a smoother workflow.</li>
+<li><strong>Flexible Retrieval</strong>: Uncover specific entities by ID or filter them based on your criteria using the versatile GetAsync. Pinpoint the exact data you need, when you need it.</li>
+<li><strong>Paged Data Fetching (Async)</strong>: Conquer large datasets with GetPagedAsync. Asynchronously retrieve data in manageable chunks, ideal for pagination and optimal performance.</li>
+<li><strong>Existence Checks (Async)</strong>: Make informed decisions with the lightning-fast ExistsAsync method, which swiftly confirms entity existence. Eliminate unnecessary database calls. ⚡</li>
+</ul>
+<h2 id="deep-data-insights"><a class="header" href="#deep-data-insights">Deep Data Insights:</a></h2>
+<ul>
+<li><strong>Efficient Counting</strong>: Gain a clear picture of your data with CountAsync for total entity counts or leverage LongCountAsync for accurate counts, even with massive datasets.</li>
+<li><strong>Targeted Counting (Async)</strong>: Delve deeper with CountByAsync. Asynchronously count entities based on specific conditions, empowering you with granular insights into your data distribution.</li>
+</ul>
+<h2 id="seamless-integration--optimization"><a class="header" href="#seamless-integration--optimization">Seamless Integration &amp; Optimization:</a></h2>
+<ul>
+<li><strong>Effortless Entity Framework Core Integration</strong>: Designed for flawless collaboration with Entity Framework Core, allowing you to leverage its full potential.</li>
+<li><strong>Eager Loading (Optional)</strong>: Boost performance by pre-fetching related entities when retrieving primary data (including an asynchronous EagerLoadAsync option), minimizing subsequent database calls. ️</li>
+</ul>
+<h2 id="this-is-just-the-beginning"><a class="header" href="#this-is-just-the-beginning">This is Just the Beginning:</a></h2>
+<ul>
+<li><strong>Community-Driven Expansion</strong>: We welcome contributions to broaden support for additional data access providers beyond Entity Framework Core! Let's make this a universally applicable solution!</li>
+<li><strong>Unwavering Testing Excellence</strong>: Our relentless pursuit of unit testing coverage ensures unmatched reliability. You can trust your data access layer with confidence!</li>
+<li><strong>Empowering Documentation (Coming Soon)</strong>: Expect even more detailed examples, tutorials, and guides to transform you into a data access master!</li>
+</ul>
+<p><strong>This is the dawn of a new era for data access in .NET. Get ready to experience the power and efficiency of Buzruk.GenericRepository v1.0.0!</strong></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

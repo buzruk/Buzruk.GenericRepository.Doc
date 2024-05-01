@@ -1,0 +1,394 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>GetPagedAsync &amp; GetPaged - Buzruk.GenericRepository</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="Home.html"><strong aria-hidden="true">1.</strong> Welcome Aboard!</a></li><li class="chapter-item expanded "><a href="Installation.html"><strong aria-hidden="true">2.</strong> Installation Blastoff!</a></li><li class="chapter-item expanded affix "><li class="part-title">⚡️ Core Functionalities</li><li class="chapter-item expanded "><a href="Usage-examples.html"><strong aria-hidden="true">3.</strong> Code Examples Galore!</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> CRUD</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="GetAsync-and-Get.html"><strong aria-hidden="true">4.1.</strong> GetAsync & Get</a></li><li class="chapter-item expanded "><a href="GetPagedAsync-and-GetPaged.html" class="active"><strong aria-hidden="true">4.2.</strong> GetPagedAsync & GetPaged</a></li><li class="chapter-item expanded "><a href="AddAsync-and-Add.html"><strong aria-hidden="true">4.3.</strong> AddAsync & Add</a></li><li class="chapter-item expanded "><a href="AddRangeAsync-and-AddRange.html"><strong aria-hidden="true">4.4.</strong> AddRangeAsync & AddRange</a></li><li class="chapter-item expanded "><a href="UpdateAsync-and-Update.html"><strong aria-hidden="true">4.5.</strong> UpdateAsync & Update</a></li><li class="chapter-item expanded "><a href="updateRangeAsync-and-UpdateRange.html"><strong aria-hidden="true">4.6.</strong> UpdateRangeAsync & UpdateRange</a></li><li class="chapter-item expanded "><a href="RemoveAsync-and-Remove.html"><strong aria-hidden="true">4.7.</strong> RemoveAsync & Remove</a></li><li class="chapter-item expanded "><a href="RemoveRangeAsync-and-RemoveRange.html"><strong aria-hidden="true">4.8.</strong> RemoveRangeAsync & RemoveRange</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Other Methods</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="ExistsAsync-and-Exists.html"><strong aria-hidden="true">5.1.</strong> ExistsAsync & Exists</a></li><li class="chapter-item expanded "><a href="CountAsync-and-Count.html"><strong aria-hidden="true">5.2.</strong> CountAsync & Count</a></li><li class="chapter-item expanded "><a href="LongCountAsync-and-LongCount.html"><strong aria-hidden="true">5.3.</strong> LongCountAsync & LongCount</a></li><li class="chapter-item expanded "><a href="CountByAsync-and-CountBy.html"><strong aria-hidden="true">5.4.</strong> CountByAsync & CountBy</a></li><li class="chapter-item expanded "><a href="saveChangesAsync-and-SaveChanges.html"><strong aria-hidden="true">5.5.</strong> SaveChangesAsync & SaveChanges</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Support & Community</li><li class="chapter-item expanded "><a href="Faq.html"><strong aria-hidden="true">6.</strong> FAQ: Your Questions Answered</a></li><li class="chapter-item expanded "><a href="Troubleshooting.html"><strong aria-hidden="true">7.</strong> Troubleshooting Like a Pro</a></li><li class="chapter-item expanded "><a href="CONTRIBUTING.html"><strong aria-hidden="true">8.</strong> Contribute & Make an Impact!</a></li><li class="chapter-item expanded affix "><li class="part-title">Additional Resources</li><li class="chapter-item expanded "><a href="CHANGELOG.html"><strong aria-hidden="true">9.</strong> CHANGELOG.md: Stay Updated</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Buzruk.GenericRepository</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="getpagedasync--getpaged-mastering-pagination-in-buzrukgenericrepository"><a class="header" href="#getpagedasync--getpaged-mastering-pagination-in-buzrukgenericrepository">GetPagedAsync &amp; GetPaged: Mastering Pagination in Buzruk.GenericRepository</a></h1>
+<p>This in-depth guide equips you to conquer large datasets effectively using <code>GetPagedAsync</code> and <code>GetPaged</code> methods within Buzruk.GenericRepository. We'll explore their functionalities, delve into various parameters for customized pagination, and provide illustrative examples to solidify your understanding.</p>
+<h2 id="understanding-getpagedasync-asynchronous-and-getpaged-synchronous"><a class="header" href="#understanding-getpagedasync-asynchronous-and-getpaged-synchronous">Understanding GetPagedAsync (Asynchronous) and GetPaged (Synchronous)</a></h2>
+<ul>
+<li><strong>Core Purpose</strong>: Both methods retrieve data in manageable chunks, ideal for pagination and handling large datasets efficiently.
+<ul>
+<li><code>GetPagedAsync</code> operates asynchronously, maintaining UI responsiveness.</li>
+<li><code>Get</code> works synchronously, fetching a page of data in a single operation.</li>
+</ul>
+</li>
+</ul>
+<h2 id="unveiling-the-powerhouse-parameters"><a class="header" href="#unveiling-the-powerhouse-parameters">Unveiling the Powerhouse Parameters</a></h2>
+<p>Both methods offer a plethora of optional parameters that empower you to tailor pagination to your specific needs. Here's a breakdown of the key ones:</p>
+<ol>
+<li>Predicates (Expression&lt;Func&lt;T, bool&gt;&gt;):
+<ul>
+<li><strong>Function</strong>: Filter entities based on specific criteria before pagination.</li>
+<li><strong>Usage</strong>: Pass a lambda expression that evaluates to <code>true</code> for entities you want to include in the results.</li>
+</ul>
+</li>
+</ol>
+<h3 id="example-getpaged-async-products-with-price-greater-than-100-page-2-size-10"><a class="header" href="#example-getpaged-async-products-with-price-greater-than-100-page-2-size-10">Example: GetPaged Async: Products with Price Greater Than $100 (Page 2, Size 10)</a></h3>
+<pre><code class="language-csharp">Task&lt;PagedResult&lt;Product&gt;&gt; pagedProductsTask = repository.GetPagedAsync&lt;Product&gt;(
+    predicate: p =&gt; p.Price &gt; 100,
+    pageNumber: 2,
+    pageSize: 10
+);
+
+PagedResult&lt;Product&gt; pagedProducts = await pagedProductsTask;
+
+// Access total items and current page's items
+int totalItems = pagedProducts.TotalCount;
+List&lt;Product&gt; products = pagedProducts.Items;
+
+Console.WriteLine($&quot;Total Products: {totalItems}&quot;);
+Console.WriteLine($&quot;Products on Page {pageNumber}:&quot;);
+foreach (var product in products)
+{
+    Console.WriteLine($&quot;- {product.Name}&quot;);
+}
+</code></pre>
+<ol start="2">
+<li><code>orderBy</code> (Expression&lt;Func&lt;T, object&gt;&gt;) and <code>thenBy</code> (Expression&lt;Func&lt;T, object&gt;&gt;):
+<ul>
+<li><strong>Function</strong>: Order retrieved entities within a page based on one or more properties.</li>
+<li><strong>Usage</strong>: Pass a lambda expression specifying the property for sorting (ascending order by default). Use <code>thenBy</code> for chained sorting (optional).</li>
+</ul>
+</li>
+</ol>
+<h3 id="example-getpaged-synchronous-top-3-products-on-each-page-ordered-by-price-descending-with-thenby-for-name"><a class="header" href="#example-getpaged-synchronous-top-3-products-on-each-page-ordered-by-price-descending-with-thenby-for-name">Example: GetPaged (Synchronous): Top 3 Products on Each Page, Ordered by Price (Descending) with <code>thenBy</code> for Name</a></h3>
+<pre><code class="language-csharp">var pagedProducts = repository.GetPaged&lt;Product&gt;(
+    orderBy: p =&gt; p.Price descending,
+    thenBy: p =&gt; p.Name,
+    pageNumber: 1,
+    pageSize: 3
+).ToList(); // Convert to List for easy iteration
+
+foreach (var product in pagedProducts)
+{
+    Console.WriteLine($&quot;Product Name: {product.Name}, Price: ${product.Price}&quot;);
+}
+</code></pre>
+<ol start="3">
+<li><code>includes</code> (Expression&lt;Func&lt;T, object&gt;&gt;[]) and <code>thenInclude</code> (Expression&lt;Func&lt;T, object&gt;&gt;[]):
+<ul>
+<li><strong>Function</strong>: Eagerly load related entities along with the primary entities within a page.</li>
+<li><strong>Usage</strong>: Pass an array of lambda expressions specifying the navigation properties to include. Use <code>thenInclude</code> for nested eager loading (optional).</li>
+</ul>
+</li>
+</ol>
+<h3 id="example-getpagedasync-get-products-with-their-categories-on-page-1-size-5"><a class="header" href="#example-getpagedasync-get-products-with-their-categories-on-page-1-size-5">Example: GetPagedAsync: Get Products with their Categories on Page 1 (Size 5)</a></h3>
+<pre><code class="language-csharp">Task&lt;PagedResult&lt;Product&gt;&gt; pagedProductsTask = repository.GetPagedAsync&lt;Product&gt;(
+    includes: p =&gt; p.Category,
+    pageNumber: 1,
+    pageSize: 5
+);
+
+PagedResult&lt;Product&gt; pagedProducts = await pagedProductsTask;
+
+foreach (var product in pagedProducts.Items)
+{
+    Console.WriteLine($&quot;Product Name: {product.Name}&quot;);
+    Console.WriteLine($&quot;Category Name: {product.Category.Name}&quot;);
+}
+</code></pre>
+<ol start="4">
+<li><code>tracking</code> (bool):
+<ul>
+<li><strong>Function</strong>: Controls whether to track entity changes for potential updates (optional, might require repository configuration for <code>UpdateAsync</code> to work).</li>
+<li><strong>Usage</strong>: Set to <code>true</code> to enable change tracking within the retrieved page.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Important Note</strong>: Refer to your repository's specific documentation for any additional parameters or configuration requirements related to change tracking.</p>
+<h2 id="behavior-without-parameters"><a class="header" href="#behavior-without-parameters">Behavior Without Parameters</a></h2>
+<ul>
+<li>If no parameters are provided, both <code>GetPagedAsync</code> and <code>GetPaged</code> retrieve the first page (usually page number 1) with a default page size (often configurable).</li>
+<li>The returned value is a <code>PagedResult&lt;T&gt;</code> object (where <code>T</code> is your entity type). This object contains two key properties:</li>
+</ul>
+<h2 id="absolutely-heres-a-breakdown-of-the-extension-methods-provided-in-the-pagedresultsextension-class"><a class="header" href="#absolutely-heres-a-breakdown-of-the-extension-methods-provided-in-the-pagedresultsextension-class">Absolutely! Here's a breakdown of the extension methods provided in the <code>PagedResultsExtension</code> class</a></h2>
+<ol>
+<li>
+<p><code>GetPage&lt;T&gt;(this PagedResults&lt;T&gt; pagedResults)</code></p>
+<ul>
+<li><strong>Functionality</strong>: This method extracts a specific page of data from the <code>PagedResults&lt;T&gt;</code> object.</li>
+<li><strong>Parameters</strong>: 
+<ul>
+<li><strong>pagedResults</strong>: The <code>PagedResults&lt;T&gt;</code> object containing the paginated data.</li>
+</ul>
+</li>
+<li><strong>Returns</strong>: An <code>IEnumerable&lt;T&gt;</code> containing the items for the requested page.</li>
+<li><strong>Exception</strong>: Throws an <code>ArgumentOutOfRangeException</code> if the requested page number is outside the valid range (1 to <code>PageCount</code>).</li>
+<li><strong>Usage</strong>:</li>
+</ul>
+<pre><code class="language-csharp">// Assuming you have a PagedResults&lt;Product&gt; object named 'pagedProducts'
+IEnumerable&lt;Product&gt; currentPageProducts = pagedProducts.GetPage&lt;Product&gt;();
+
+// Iterate through the products on the current page
+foreach (var product in currentPageProducts)
+{
+Console.WriteLine($&quot;Product Name: {product.Name}&quot;);
+}
+</code></pre>
+</li>
+<li>
+<p><code>GetPartialView&lt;T&gt;(this PagedResults&lt;T&gt; model, string controllerName, string actionName, string areaName = &quot;&quot;, string routeParameterName = &quot;pageNumber&quot;)</code></p>
+<ul>
+<li><strong>Functionality</strong>: This method generates a partial view containing HTML code for page navigation based on the provided PagedResults<T> model. It leverages Razor syntax (@ symbol) for building the HTML structure.</li>
+<li><strong>Parameters</strong>:
+<ul>
+<li><strong>model</strong>: The PagedResults<T> instance containing paging information and data.</li>
+<li><strong>controllerName</strong>: The name of the controller that handles pagination requests.</li>
+<li><strong>actionName</strong>: The name of the action method that handles pagination requests.</li>
+<li><strong>areaName (Optional)</strong>: The name of the area for routing (defaults to empty string).</li>
+<li><strong>routeParameterName (Optional)</strong>: The name of the route parameter used for the current page number (defaults to &quot;pageNumber&quot;).</li>
+</ul>
+</li>
+<li><strong>Returns</strong>: A string containing the generated HTML partial view for pagination.</li>
+<li><strong>Notes</strong>:
+<ul>
+<li>This method currently uses a <code>StringBuilder</code> to construct the HTML dynamically.</li>
+<li>It includes placeholder comments for functionalities like adding dark mode/light mode options (TODO).</li>
+<li>The logic for generating the pagination links considers various scenarios based on the total number of pages and the current page number.</li>
+<li>It also includes some basic JavaScript code to dynamically set the active page class and handle relative URLs.</li>
+<li><strong>Usage</strong>:</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-csharp">// Assuming you have a PagedResults&lt;Product&gt; object named 'pagedProducts'
+// and your controller and action names are set
+
+string paginationHtml = pagedProducts.GetPartialView&lt;Product&gt;(
+    controllerName: &quot;Products&quot;,
+    actionName: &quot;Index&quot;
+);
+
+// Use the generated HTML in your Razor view
+@Html.Raw(paginationHtml)
+</code></pre>
+<h2 id="remember"><a class="header" href="#remember">Remember:</a></h2>
+<ul>
+<li>The <code>GetPage</code> method is useful for retrieving a specific page of data for further processing within your application logic.</li>
+<li>The <code>GetPartialView</code> method helps in creating a user-friendly pagination interface for navigating through large datasets in your web application.</li>
+<li>Consider customizing the provided JavaScript code to fit your specific requirements and styling preferences.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="GetAsync-and-Get.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="AddAsync-and-Add.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="GetAsync-and-Get.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="AddAsync-and-Add.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
